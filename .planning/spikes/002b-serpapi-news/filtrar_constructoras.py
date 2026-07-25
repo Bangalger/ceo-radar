@@ -3,81 +3,26 @@
 from __future__ import annotations
 
 import json
-import unicodedata
+import sys
 from datetime import UTC, datetime
 from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "src"))
+
+from ceo_radar.catalogs import (  # noqa: E402
+    LATAM_COMPANIES,
+    NON_LATAM_COMPANIES,
+    SECTOR_MARKERS,
+    TARGET_ROLES,
+    normalize,
+)
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 SOURCE = RESULTS_DIR / "constructoras_latest.json"
 OUTPUT = RESULTS_DIR / "constructoras_curadas.json"
 
-SECTOR_MARKERS = (
-    "constructora",
-    "construtora",
-    "incorporadora",
-    "inmobiliaria",
-    "desarrolladora inmobiliaria",
-    "empreendimentos",
-    "realty",
-)
-
-KNOWN_LATAM_COMPANIES = (
-    "gcdi",
-    "cgdi",
-    "tglt",
-    "urbanova",
-    "milicic",
-    "bonatti",
-    "contract workplaces",
-    "tenda",
-    "trisul",
-    "dasart",
-    "pdg",
-    "tarraf",
-    "allterra",
-    "grupo marquise",
-    "gafisa",
-    "vci",
-    "novonor",
-    "odebrecht",
-    "caparao",
-    "rossi",
-    "grupo diagonal",
-    "consciente",
-    "mota machado",
-    "rni",
-)
-
-NON_LATAM_COMPANIES = (
-    "tektia",
-    "ulma",
-    "seyses",
-    "rubau",
-    "fcc",
-    "mota-engil",
-    "mota engil",
-    "fortera",
-    "grupo afa",
-    "teixeira duarte",
-    "algeco",
-    "berkshire hathaway",
-)
-
-TARGET_ROLES = (
-    "ceo",
-    "director ejecutivo",
-    "diretor executivo",
-    "gerente comercial",
-    "director comercial",
-    "diretor comercial",
-)
-
 CURRENT_YEAR = datetime.now(UTC).year
-
-
-def normalize(text: str) -> str:
-    decomposed = unicodedata.normalize("NFKD", text)
-    return "".join(char for char in decomposed if not unicodedata.combining(char)).lower()
 
 
 def is_relevant(title: str) -> bool:
@@ -86,7 +31,7 @@ def is_relevant(title: str) -> bool:
         return False
     has_target_role = any(role in normalized for role in TARGET_ROLES)
     has_sector = any(marker in normalized for marker in SECTOR_MARKERS) or any(
-        company in normalized for company in KNOWN_LATAM_COMPANIES
+        company in normalized for company in LATAM_COMPANIES
     )
     return has_target_role and has_sector
 

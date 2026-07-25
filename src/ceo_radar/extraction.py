@@ -1,49 +1,151 @@
-from typing import Dict, Any, Optional
+"""Extracción estructurada de entidades desde títulos y descripciones."""
+
+from __future__ import annotations
+
 import re
-from ceo_radar.catalogs import get_country_from_text
+from typing import Any, Dict, Optional
+
+from ceo_radar.catalogs import (
+    SECTOR_MARKERS,
+    TARGET_ROLES,
+    find_known_company,
+    normalize,
+)
+
+# Patrones para extraer persona desde titulares comunes
+_NAME = r"[A-ZÁÉÍÓÚÑÃÕÇ][a-záéíóúñãõç]+(?:\s+[A-ZÁÉÍÓÚÑÃÕÇ][a-záéíóúñãõç]+){0,3}"
+
+PERSON_PATTERNS: list[re.Pattern[str]] = [
+    re.compile(rf"designa\s+a\s+({_NAME})\s+como", re.IGNORECASE),
+    re.compile(rf"nombr[oó]\s+(?:como\s+)?(?:a\s+)?({_NAME})\s+como", re.IGNORECASE),
+    re.compile(rf"anuncia\s+({_NAME})\s+como", re.IGNORECASE),
+    re.compile(rf"escolhe\s+({_NAME})\s+como", re.IGNORECASE),
+    re.compile(rf"({_NAME})\s+(?:é|e)\s+o\s+novo", re.IGNORECASE),
+    re.compile(rf"({_NAME})\s+assume\s+como", re.IGNORECASE),
+    re.compile(rf"nomeia\s+({_NAME})", re.IGNORECASE),
+]
+
+CHANGE_KEYWORDS: tuple[str, ...] = (
+    "nombramiento",
+    "nombra",
+    "nombró",
+    "nomeia",
+    "nomeou",
+    "anuncia",
+    "designa",
+    "escolhe",
+    "troca",
+    "renuncia",
+    "renúncia",
+    "adquisición",
+    "fusión",
+)
+
+
+def _extract_role(text: str) -> tuple[Optional[str], str]:
+    normalized = normalize(text)
+    for role in sorted(TARGET_ROLES, key=len, reverse=True):
+        if role in normalized:
+            return role, "alta"
+    # Fallback genérico
+    for keyword in ("ceo", "director", "gerente", "presidente", "cfo", "cto"):
+        if re.search(r"\b" + re.escape(keyword) + r"\b", normalized):
+            return keyword, "baja"
+    return None, "baja"
+
+
+def _extract_change_type(text: str) -> tuple[Optional[str], str]:
+    normalized = normalize(text)
+    for keyword in CHANGE_KEYWORDS:
+        if keyword in normalized:
+            return keyword, "media"
+    return None, "baja"
+
+
+def _extract_person(text: str) -> tuple[Optional[str], str]:
+    for pattern in PERSON_PATTERNS:
+        match = pattern.search(text)
+        if match:
+            person = match.group(1).strip()
+            # Filtrar capturas demasiado cortas o genéricas
+            if len(person.split()) >= 2 or (len(person) > 4 and person[0].isupper()):
+                return person, "media"
+    return None, "baja"
+
+
+def _extract_company(text: str) -> tuple[Optional[str], str, Optional[str]]:
+    """Retorna (company, confidence, country_from_catalog)."""
+    known = find_known_company(text)
+    if known:
+        company, country = known
+        return company, "alta", country
+
+    normalized = normalize(text)
+    if any(marker in normalized for marker in SECTOR_MARKERS):
+        return "Desconocida", "baja", None
+
+    return None, "baja", None
+
 
 def extract_entities_from_text(text: str) -> Dict[str, Any]:
-    # Esta es una implementación básica. En el futuro, se podría usar NLP más avanzado.
-    entities = {}
+    entities: Dict[str, Any] = {}
+    confidence: Dict[str, str] = {}
 
-    # Ejemplo: Extracción de empresas (muy simplificado)
-    company_keywords = ["constructora", "inmobiliaria", "grupo", "s.a.", "s.r.l."]
-    for keyword in company_keywords:
-        if re.search(r'\b' + re.escape(keyword) + r'\b', text, re.IGNORECASE):
-            # Esto es solo un placeholder, la extracción real de la empresa sería más compleja
-            entities["company"] = entities.get("company", "Desconocida") # Mejorar esto
-            break
+    company, company_conf, catalog_country = _extract_company(text)
+    if company:
+        entities["company"] = company
+        confidence["company"] = company_conf
+        if catalog_country:
+            entities["country"] = catalog_country
+            confidence["country"] = "alta"
 
-    # Ejemplo: Extracción de roles (muy simplificado)
-    role_keywords = ["ceo", "director", "gerente", "presidente", "cfo", "cto"]
-    for keyword in role_keywords:
-        if re.search(r'\b' + re.escape(keyword) + r'\b', text, re.IGNORECASE):
-            entities["role"] = keyword # Mejorar esto para extraer el rol específico
-            break
-    
-    # Ejemplo: Extracción de tipo de cambio (muy simplificado)
-    change_keywords = ["nombramiento", "renuncia", "adquisición", "fusión"]
-    for keyword in change_keywords:
-        if re.search(r'\b' + re.escape(keyword) + r'\b', text, re.IGNORECASE):
-            entities["change_type"] = keyword
-            break
+    role, role_conf = _extract_role(text)
+    if role:
+        entities["role"] = role
+        confidence["role"] = role_conf
 
-    # Añadir lógica para extraer 'persona' si es posible
+    change_type, change_conf = _extract_change_type(text)
+    if change_type:
+        entities["change_type"] = change_type
+        confidence["change_type"] = change_conf
 
-    # Intentar inferir el país del texto también
-    country_from_text = get_country_from_text(text)
-    if country_from_text:
-        entities["country"] = country_from_text
-    
+    person, person_conf = _extract_person(text)
+    if person:
+        entities["person"] = person
+        confidence["person"] = person_conf
+
+    if confidence:
+        entities["confidence"] = confidence
+
     return entities
 
-def infer_country_from_source(source: str, text: str = "") -> Optional[str]:
-    # Primero intenta inferir del texto, luego de la fuente si no se encuentra
-    country = get_country_from_text(text)
-    if country:
-        return country
-    
+
+def infer_country(
+    *,
+    source: str,
+    company: Optional[str] = None,
+    url: Optional[str] = None,
+    catalog_country: Optional[str] = None,
+) -> Optional[str]:
+    """Inferir país real sin usar market como proxy."""
+    if catalog_country:
+        return catalog_country
+
+    if company:
+        from ceo_radar.catalogs import get_country_for_company
+
+        country = get_country_for_company(company)
+        if country:
+            return country
+
+    if url:
+        from ceo_radar.catalogs import get_country_from_url
+
+        country = get_country_from_url(url)
+        if country:
+            return country
+
     if source == "cnv":
         return "argentina"
-    # Añadir más reglas para otras fuentes si es necesario
+
     return None
