@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-07-26T00:14:47.861622+00:00",
+  "scope": "Nombramientos y cambios de gerencia/dirección detectados en Infocomercial (blog.infocomercial.com), foco Argentina.",
+  "source_url": "https://blog.infocomercial.com",
+  "access_status": "blocked",
+  "access_note": "El sitio responde HTTP 403 a requests automatizados (incluso con User-Agent de navegador). Se requeriría acceso alternativo (p. ej. proxy, API de terceros o revisión manual) para obtener datos.",
+  "searches": [
+    {
+      "query": "nuevo gerente",
+      "status": 403,
+      "result_count": 0
+    },
+    {
+      "query": "nueva gerente",
+      "status": 403,
+      "result_count": 0
+    },
+    {
+      "query": "nuevo director",
+      "status": 403,
+      "result_count": 0
+    },
+    {
+      "query": "nuevo presidente",
+      "status": 403,
+      "result_count": 0
+    }
+  ],
+  "unique_result_count": 0,
+  "results": []
+}

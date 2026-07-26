@@ -25,3 +25,8 @@ def parse_cnv_date(value: str) -> datetime:
         SPANISH_MONTHS[month.lower()],
         int(day),
     )
+
+
+def parse_bo_date(value: str) -> datetime:
+    """Parsea fechas dd/mm/aaaa del Boletín Oficial."""
+    return datetime.strptime(value[:10], "%d/%m/%Y")

@@ -1,0 +1,429 @@
+{
+  "generated_at": "2026-07-26T00:14:57.968502+00:00",
+  "year": 2026,
+  "scope": "Nombramientos curados desde revistas de nicho argentinas. Se incluyen resultados del año vigente con señales de rol, persona, empresa o tipo de cambio.",
+  "source_stats": [
+    {
+      "source": "infocomercial_latest.json",
+      "raw_count": 0,
+      "access_status": "blocked"
+    },
+    {
+      "source": "adlatina_latest.json",
+      "raw_count": 60,
+      "access_status": "ok"
+    }
+  ],
+  "raw_result_count": 60,
+  "curated_result_count": 20,
+  "results": [
+    {
+      "market": "latam_es",
+      "page": "1",
+      "query": "nombramientos",
+      "title": "Diego Salazar empezó a trabajar en Beyond One",
+      "source": "Marketers by Adlatina",
+      "date": "07/23/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14831_diego-salazar-empezo-a-trabajar-en-beyond-one",
+      "snippet": "Tras cinco años construyendo su propia marca —una aplicación móvil para estudiantes que buscan tutores universitarios—, Salazar se pasó a Didi, donde estuvo, en total, cinco años. Ahora asume un nuevo puesto como director de marketing en Beyond One.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "1",
+      "query": "nombramientos",
+      "title": "Miguel Ángel Pascual vuelve al país de la mano de Pernod Ricard España",
+      "source": "Marketers by Adlatina",
+      "date": "07/16/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14803_miguel-angel-pascual-vuelve-al-pais-de-la-mano-de-pernod-ricard-espana",
+      "snippet": "Tras cuatro años como marketing and trade marketing senior director en Corea del Sur, Pascual asume la dirección de marketing en España para Pernod Ricard. En total lleva doce años en la empresa.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "1",
+      "query": "nombramientos",
+      "title": "Marcelo Bronze es el nuevo director de marketing de XP",
+      "source": "Marketers by Adlatina",
+      "date": "07/15/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14797_marcelo-bronze-es-el-nuevo-director-de-marketing-de-xp",
+      "snippet": "Luego de seis años en Danone, donde fue director de marketing y CMO de Brasil, Bronze asume la dirección del departamento creativo.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "2",
+      "query": "nombramientos",
+      "title": "Diego García es el director de marketing de Rubasa",
+      "source": "Marketers by Adlatina",
+      "date": "07/07/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14768_diego-garcia-es-el-director-de-marketing-de-rubasa",
+      "snippet": "En total, lleva ocho meses en su cargo actual mientras lidera su marca personal, Monalisa Cucina Italiana & Tipiko desde hace nueve años.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "2",
+      "query": "nombramientos",
+      "title": "Mauricio Bernal fue ascendido en PepsiCo México",
+      "source": "Marketers by Adlatina",
+      "date": "07/06/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14763_mauricio-bernal-fue-ascendido-en-pepsico-mexico",
+      "snippet": "Luego de menos de un año como global marketing director de Pepsi Football, Bernal fue promovido a hydration & energy marketing head. Antes de trabajar para la multinacional ocupó cargos de marketing en Quala S.A., JGB y Belcorp, entre otras empresas.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "2",
+      "query": "nombramientos",
+      "title": "Fabricio Vega fue ascendido en Arca Continental Lindley",
+      "source": "Marketers by Adlatina",
+      "date": "07/03/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14757_fabricio-vega-fue-ascendido-en-arca-continental-lindley",
+      "snippet": "Vega asumió la gerencia del área de shopper & trade marketing en la empresa peruana luego de tres años y medio como gerente de mercadotecnia para la región norte. En total lleva más de doce años en la marca.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "gerente",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "2",
+      "query": "nombramientos",
+      "title": "Tibisay Betancourt es nueva directora de marketing regional de Warner Bros Discovery",
+      "source": "Marketers by Adlatina",
+      "date": "06/26/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14730_tibisay-betancourt-es-nueva-directora-de-marketing-regional-de-warner-bros-discovery",
+      "snippet": "Después de cinco años y medio como trade marketing director, Betancourt asume la dirección regional de general entertainment brands en la empresa.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "2",
+      "query": "nombramientos",
+      "title": "Andrea Rojas Bravo empezó en un nuevo puesto en Alicorp",
+      "source": "Marketers by Adlatina",
+      "date": "06/25/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14725_andrea-rojas-bravo-empezo-en-un-nuevo-puesto-en-alicorp",
+      "snippet": "Tras cinco años en Danper, Rojas Bravo empieza una nueva etapa como gerente de marca en la categoría cuidado de cabello en Alicorp. Antes trabajó en las empresas Genomma Lab y Unilever.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "gerente",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "2",
+      "query": "nombramientos",
+      "title": "Bruno Cardinali es el nuevo CMO de Pura Vida Miami",
+      "source": "Marketers by Adlatina",
+      "date": "06/22/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14710_bruno-cardinali-es-el-nuevo-cmo-de-pura-vida-miami",
+      "snippet": "El marketer ya había sido director de marketing para marcas como Oakberry y Popeyes durante tres años en cada una. Además, trabajó trece años en Unilever y se retiró como director de marketing de Lipton Iced Tea para Norteamérica.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "3",
+      "query": "nombramientos",
+      "title": "Armando Emanuelli empezó en un nuevo puesto en el Hyatt Regency Grand Reserve de Puerto Rico",
+      "source": "Marketers by Adlatina",
+      "date": "06/16/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14685_armando-emanuelli-empezo-en-un-nuevo-puesto-en-el-hyatt-regency-grand-reserve-de-puerto-rico",
+      "snippet": "Después de catorce años como director, sales and marketing de Hotel Rumbao Tribute Portfolio, asume el mismo cargo en el Hyatt Regency Grand Reserve.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "3",
+      "query": "nombramientos",
+      "title": "Jorge Zambrano asume un nuevo cargo en Changan Autocom",
+      "source": "Marketers by Adlatina",
+      "date": "06/12/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14681_jorge-zambrano-asume-un-nuevo-cargo-en-changan-autocom",
+      "snippet": "Tras seis años en Autocom después de su segunda reincorporación a la empresa, Zambrano es el nuevo director de marca de Changan Autocom.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "4",
+      "query": "nombramientos",
+      "title": "Omar Carrión dejará Kellanova",
+      "source": "Marketers by Adlatina",
+      "date": "05/28/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14625_omar-carrion-dejara-kellanova",
+      "snippet": "La novedad, informada por el propio protagonista en su LinkedIn, ocurre en medio de la transformación organizacional tras la integración de la empresa con Mars; Carrión mantendrá su puesto de senior integrated marketing & omnichannel director para Latinoamérica hasta el último día de junio. En la nota, el texto completo de la publicación de Carrión en sus redes.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "4",
+      "query": "nombramientos",
+      "title": "Lucas Fernández llegó a Freddo como chief commercial & marketing officer",
+      "source": "Marketers by Adlatina",
+      "date": "05/27/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14620_lucas-fernandez-llego-a-freddo-como-chief-commercial--marketing-officer",
+      "snippet": "Hasta febrero había sido director de marketing, productos y ventas digitales para América Latina en Arcos Dorados, tras una carrera de más de treinta y cinco años en esa empresa.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "4",
+      "query": "nombramientos",
+      "title": "David Martínez es el nuevo CMO de Cien Grupo Inombiliario en México",
+      "source": "Marketers by Adlatina",
+      "date": "05/26/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14613_david-martinez-es-el-nuevo-cmo-de-cien-grupo-inombiliario-en-mexico",
+      "snippet": "El mes pasado, Martínez asumió la dirección de marketing en la inmobiliaria Cien de México. Antes había sido gerente de marketing digital e innovación en Construrama Blanquita por cuatro años.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Desconocida",
+        "role": "gerente",
+        "confidence": {
+          "company": "baja",
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "4",
+      "query": "nombramientos",
+      "title": "Stefan Ivanoff es el nuevo gerente de marketing de sabores en The Coca-Cola Company",
+      "source": "Marketers by Adlatina",
+      "date": "05/20/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14595_stefan-ivanoff-es-el-nuevo-gerente-de-marketing-de-sabores-en-the-coca-cola-company",
+      "snippet": "Antes estuvo un año y medio en Industrias San Miguel. También trabajó en marcas como Perufarma, Alicorp e Intradevco.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "gerente",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "5",
+      "query": "nombramientos",
+      "title": "Nicolá Lamiaux ahora trabaja en Sky Airlines",
+      "source": "Marketers by Adlatina",
+      "date": "05/14/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14573_nicola-lamiaux-ahora-trabaja-en-sky-airlines",
+      "snippet": "Ahora es el nuevo gerente de marketing de la empresa, después de seis años de trabajar en Seguros Sura como director de transformación de accesos y experiencia al cliente.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "5",
+      "query": "nombramientos",
+      "title": "Guilherme Moraes fue ascendido en Unilever Global",
+      "source": "Marketers by Adlatina",
+      "date": "05/07/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14549_guilherme-moraes-fue-ascendido-en-unilever-global",
+      "snippet": "Ahora es el nuevo director global de marketing de la marca, después de más de un año como senior global marketing manager.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "confidence": {
+          "role": "baja",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "5",
+      "query": "nombramientos",
+      "title": "Antonio Lucio se va de HP y empieza como CMO en Paypal",
+      "source": "Marketers by Adlatina",
+      "date": "05/05/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14539_antonio-lucio-se-va-de-hp-y-empieza-como-cmo-en-paypal",
+      "snippet": "Además de Antonio Lucio, Paypal también contrató a Enrique Lores como su nuevo CEO y presidente, en un proceso de reestructuración interna anunciado por la empresa. Al respecto, Lores afirmó que “Para acelerar y desbloquear todo nuestro potencial, necesitamos revisitar nuestras bases”.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "ceo",
+        "change_type": "anuncia",
+        "confidence": {
+          "role": "alta",
+          "change_type": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "5",
+      "query": "nombramientos",
+      "title": "Lucas Fernández anuncia su salida de Arcos Dorados y María Esther Rivera Rodríguez empieza en Grupo Lala",
+      "source": "Marketers by Adlatina",
+      "date": "05/04/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14534_lucas-fernandez-anuncia-su-salida-de-arcos-dorados-y-maria-esther-rivera-rodriguez-empieza-en-grupo-lala",
+      "snippet": "Fernández trabajó durante treinta y cinco años en la empresa y se retira como director corporativo de marketing de productos y venta digitales Latam. Por su parte, Rivera Rodríguez empieza en un nuevo puesto como senior marketing manager de Nutri Brand.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Lucas Fernández",
+        "role": "director",
+        "change_type": "anuncia",
+        "confidence": {
+          "company": "media",
+          "role": "baja",
+          "change_type": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "5",
+      "query": "nombramientos",
+      "title": "Mónica Albuquerque empieza en un nuevo puesto en Disney+ Brasil",
+      "source": "Marketers by Adlatina",
+      "date": "04/29/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14523_monica-albuquerque-empieza-en-un-nuevo-puesto-en-disney-brasil",
+      "snippet": "Sobre su nombramiento, Daniel Burman —head de original content Latam, a quien reportará— afirmó que: “Mónica es una de las ejecutivas creativas más respetadas de la industria, con una trayectoria excepcional en el desarrollo de contenido de alta calidad y gran resonancia cultural”.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "change_type": "nombramiento",
+        "confidence": {
+          "change_type": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    }
+  ]
+}

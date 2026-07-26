@@ -5,7 +5,7 @@ from typing import List, Dict, Any, Optional, Tuple
 from hashlib import sha256
 
 from ceo_radar.models import Article, Event, Run
-from ceo_radar.utils import parse_cnv_date, parse_google_date
+from ceo_radar.utils import parse_bo_date, parse_cnv_date, parse_google_date
 from ceo_radar.extraction import extract_entities_from_text, infer_country
 from ceo_radar.catalogs import get_sector_for_company, get_company_size, normalize
 
@@ -25,6 +25,22 @@ GOOGLE_INPUT = (
     / "002b-serpapi-news"
     / "results"
     / "constructoras_curadas.json"
+)
+BO_INPUT = (
+    ROOT
+    / ".planning"
+    / "spikes"
+    / "006-boletin-oficial"
+    / "results"
+    / "latest.json"
+)
+NICHO_INPUT = (
+    ROOT
+    / ".planning"
+    / "spikes"
+    / "007-revistas-nicho"
+    / "results"
+    / "curadas.json"
 )
 OUTPUT = ROOT / ".planning" / "results" / "oportunidades_unificadas.json"
 
@@ -57,14 +73,18 @@ def generate_event_id(entities: Dict[str, Any], window_start: datetime) -> str:
     return sha256(key.encode()).hexdigest()
 
 
-def _has_high_confidence_company(extracted_data: Dict[str, Any]) -> bool:
+def _has_reliable_company(extracted_data: Dict[str, Any]) -> bool:
     confidence = extracted_data.get("confidence", {})
     company = extracted_data.get("company")
-    return bool(company and company != "Desconocida" and confidence.get("company") == "alta")
+    return bool(
+        company
+        and company != "Desconocida"
+        and confidence.get("company") in ("alta", "media")
+    )
 
 
 def _grouping_key(extracted_data: Dict[str, Any]) -> Optional[Tuple[str, str]]:
-    if not _has_high_confidence_company(extracted_data):
+    if not _has_reliable_company(extracted_data):
         return None
     company = normalize(str(extracted_data.get("company", "")))
     role = normalize(str(extracted_data.get("role", "")))
@@ -136,6 +156,8 @@ def group_articles_into_events(articles: List[Article]) -> List[Event]:
 def run_pipeline() -> Run:
     cnv_raw = json.loads(CNV_INPUT.read_text(encoding="utf-8"))
     google_raw = json.loads(GOOGLE_INPUT.read_text(encoding="utf-8"))
+    bo_raw = json.loads(BO_INPUT.read_text(encoding="utf-8"))
+    nicho_raw = json.loads(NICHO_INPUT.read_text(encoding="utf-8"))
 
     articles: List[Article] = []
 
@@ -219,14 +241,85 @@ def run_pipeline() -> Run:
             )
         )
 
+    bo_results = [item for item in bo_raw["results"] if item.get("relevant")]
+    for item in bo_results:
+        published_at = parse_bo_date(item["date"])
+        article_id = generate_article_id("boletin_oficial", item["detail_url"])
+        full_text = f"{item['entity']} {item['rubro']} {item['description']}"
+        extracted_data = extract_entities_from_text(full_text)
+
+        company_name = item["entity"]
+        extracted_data["company"] = company_name
+        extracted_data.setdefault("confidence", {})["company"] = "alta"
+        extracted_data["country"] = "argentina"
+        extracted_data.setdefault("confidence", {})["country"] = "alta"
+
+        sector = get_sector_for_company(company_name)
+        if sector:
+            extracted_data["sector"] = sector
+        size = get_company_size(company_name)
+        if size:
+            extracted_data["company_size"] = size
+
+        articles.append(
+            Article(
+                id=article_id,
+                source="boletin_oficial",
+                url=item["detail_url"],
+                title=f"{item['entity']} — {item['rubro']}",
+                published_at=published_at,
+                content=item["description"],
+                extracted_data=extracted_data,
+            )
+        )
+
+    for item in nicho_raw["results"]:
+        published_at = parse_google_date(item["date"])
+        article_id = generate_article_id(item["source_file"], item["link"])
+        extracted_data = dict(item.get("extracted_data", {}))
+
+        company_name = extracted_data.get("company")
+        if company_name and company_name != "Desconocida":
+            sector = get_sector_for_company(company_name)
+            if sector:
+                extracted_data["sector"] = sector
+            size = get_company_size(company_name)
+            if size:
+                extracted_data["company_size"] = size
+
+        articles.append(
+            Article(
+                id=article_id,
+                source=item["source_file"],
+                url=item["link"],
+                title=item["title"],
+                description=item["snippet"],
+                published_at=published_at,
+                extracted_data=extracted_data,
+            )
+        )
+
     event_list = group_articles_into_events(articles)
+
+    companies_by_pattern = sorted(
+        {
+            article.extracted_data["company"]
+            for article in articles
+            if article.extracted_data.get("confidence", {}).get("company") == "media"
+            and article.extracted_data.get("company")
+            and article.extracted_data.get("company") != "Desconocida"
+        }
+    )
 
     run_metrics = {
         "cnv_articles": len(cnv_raw["results"]),
         "google_articles": len(google_raw["results"]),
+        "boletin_oficial_articles": len(bo_results),
+        "revistas_nicho_articles": len(nicho_raw["results"]),
         "total_articles": len(articles),
         "total_events": len(event_list),
         "grouping_window_days": GROUPING_WINDOW_DAYS,
+        "companies_by_pattern": companies_by_pattern,
     }
 
     current_run = Run(
@@ -245,6 +338,8 @@ def run_pipeline() -> Run:
                 "source_counts": {
                     "cnv": len(cnv_raw["results"]),
                     "google_news": len(google_raw["results"]),
+                    "boletin_oficial": len(bo_results),
+                    "revistas_nicho": len(nicho_raw["results"]),
                 },
                 "result_count": len(event_list),
                 "results": [event.model_dump(mode="json") for event in event_list],

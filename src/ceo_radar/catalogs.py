@@ -61,12 +61,20 @@ NON_LATAM_COMPANIES: tuple[str, ...] = (
 )
 
 TARGET_ROLES: tuple[str, ...] = (
-    "ceo",
     "director ejecutivo",
     "diretor executivo",
+    "director titular",
+    "directora titular",
+    "director suplente",
+    "directora suplente",
+    "gerente general",
     "gerente comercial",
     "director comercial",
     "diretor comercial",
+    "vicepresidente",
+    "presidente",
+    "directorio",
+    "ceo",
 )
 
 # Mapeo de dominio TLD -> país
