@@ -8,7 +8,8 @@ sys.path.append(str(ROOT_DIR))
 sys.path.append(str(ROOT_DIR / "src"))
 
 from ceo_radar.models import Event, Feedback  # noqa: E402
-from ceo_radar.services import events_service, feedback_service  # noqa: E402
+from ceo_radar.services import events_service, feedback_service, refresh_service  # noqa: E402
+from ceo_radar.services.refresh_service import RefreshStepResult  # noqa: E402
 
 ROLE_LABELS = {
     "ceo": "Nuevo CEO",
@@ -131,6 +132,24 @@ def render_feedback_form(event: Event, latest: Feedback | None) -> None:
                 st.error(str(exc))
 
 
+def render_refresh_summary(results: list[RefreshStepResult]) -> None:
+    ok_count = sum(1 for result in results if result.ok)
+    fail_count = len(results) - ok_count
+
+    if fail_count == 0:
+        st.success(f"Actualización completa: {ok_count}/{len(results)} pasos exitosos.")
+    else:
+        st.warning(
+            f"Actualización parcial: {ok_count}/{len(results)} pasos exitosos, "
+            f"{fail_count} con error."
+        )
+
+    for result in results:
+        icon = "✅" if result.ok else "⚠️"
+        with st.expander(f"{icon} {result.name}", expanded=not result.ok):
+            st.text(result.message or "Sin detalle.")
+
+
 def render_feedback_history(event: Event) -> None:
     history = feedback_service.feedback_history_for_event(event.id)
     if not history:
@@ -152,8 +171,42 @@ def load_events_cached(_events_mtime: float, _feedback_mtime: float):
 
 events_service.ensure_events_file()
 
-if st.sidebar.button("Regenerar datos (correr pipeline)"):
-    with st.spinner("Corriendo pipeline..."):
+st.sidebar.header("Datos")
+st.sidebar.caption(
+    "La búsqueda completa tarda ~1-2 minutos y consume cuota de SerpAPI."
+)
+
+if st.sidebar.button("Buscar y actualizar todas las fuentes"):
+    status_lines: dict[str, str] = {}
+
+    with st.status("Buscando y actualizando fuentes...", expanded=True) as status:
+        progress_placeholder = st.empty()
+
+        def on_refresh_progress(
+            name: str,
+            result: RefreshStepResult | None,
+            is_pipeline: bool,
+        ) -> None:
+            del is_pipeline
+            if result is None:
+                status_lines[name] = f"⏳ {name}..."
+            else:
+                icon = "✅" if result.ok else "⚠️"
+                status_lines[name] = f"{icon} {name}"
+            progress_placeholder.markdown("\n\n".join(status_lines.values()))
+
+        refresh_results = refresh_service.run_full_refresh(on_progress=on_refresh_progress)
+        status.update(
+            label="Actualización finalizada",
+            state="complete",
+        )
+
+    st.session_state["last_refresh_results"] = refresh_results
+    st.cache_data.clear()
+    st.rerun()
+
+if st.sidebar.button("Remezclar datos existentes (sin buscar)"):
+    with st.spinner("Remezclando datos existentes..."):
         events_service.regenerate_events()
     st.cache_data.clear()
     st.rerun()
@@ -166,6 +219,9 @@ events, generated_at, source_counts, result_count = load_events_cached(
 latest_by_event = feedback_service.latest_status_by_event()
 
 st.title("CEO Radar: Oportunidades Ejecutivas")
+
+if "last_refresh_results" in st.session_state:
+    render_refresh_summary(st.session_state["last_refresh_results"])
 
 st.write(f"Última actualización de datos: {generated_at}")
 st.write(f"Total de eventos detectados: {result_count}")

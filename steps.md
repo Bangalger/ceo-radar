@@ -1,6 +1,6 @@
 # CEO Radar — Estado del trabajo
 
-**Fecha:** 2026-07-25  
+**Fecha:** 2026-07-27  
 **Enfoque:** Latinoamérica  
 **Objetivo:** detectar cambios ejecutivos recientes que puedan abrir una ventana comercial.
 
@@ -21,8 +21,10 @@ Cada fuente conserva su resultado independiente y, además, existe un proceso de
 consolidación que normaliza fechas y campos básicos, identifica el origen y
 ordena todas las oportunidades desde la más reciente.
 
-El flujo es reproducible mediante scripts locales y no requiere intervención
-manual salvo la disponibilidad de la clave de SerpAPI. La consulta a CNV usa
+El flujo es reproducible mediante scripts locales. Desde el dashboard Streamlit
+se puede disparar la búsqueda en todas las fuentes y la consolidación con un
+click; también sigue siendo posible correr cada script por separado. La consulta
+a SerpAPI requiere `SERPAPI_API_KEY` en `.env`. La consulta a CNV usa
 información pública y no necesita credenciales.
 
 ## Estado actual
@@ -36,6 +38,7 @@ información pública y no necesita credenciales.
 - [x] Spike Boletín Oficial (006): búsqueda en Sección 2 por texto libre y empresas argentinas del catálogo.
 - [x] Spike revistas de nicho (007): Marketers by Adlatina + intento Infocomercial.
 - [x] Curación de nombramientos desde revistas de nicho (`curadas.json`).
+- [x] Orquestación de fuentes desde el dashboard (`refresh_service.py` + botón en `app.py`).
 
 ## Spikes Argentina (2026-07-25)
 
@@ -76,20 +79,20 @@ información pública y no necesita credenciales.
 
 ### Interfaz y feedback
 
-- [ ] Crear una interfaz para visualizar las oportunidades consolidadas.
+- [x] Crear una interfaz para visualizar las oportunidades consolidadas.
 - [ ] Permitir filtrar por fecha, fuente, mercado, empresa, rol y estado.
-- [ ] Permitir votar cada resultado como:
+- [x] Permitir votar cada resultado como:
   - buen candidato;
   - revisar más tarde;
   - no relevante.
-- [ ] Permitir indicar el motivo del rechazo: sector incorrecto, cargo no
+- [x] Permitir indicar el motivo del rechazo: sector incorrecto, cargo no
   relevante, noticia vieja, empresa fuera del mercado objetivo, duplicado,
   cambio sin intención comercial u otro.
-- [ ] Generar un identificador estable para cada resultado y persistir las
+- [x] Generar un identificador estable para cada resultado y persistir las
   decisiones en un archivo local, por ejemplo `feedback.json`.
-- [ ] Mantener en el feedback el estado, motivo, comentario, fecha y regla
+- [x] Mantener en el feedback el estado, motivo, comentario, fecha y regla
   sugerida, sin modificar el resultado original.
-- [ ] Ocultar resultados rechazados en la vista normal, conservándolos para
+- [x] Ocultar resultados rechazados en la vista normal, conservándolos para
   auditoría.
 - [ ] Proponer reglas de exclusión a partir del feedback y aplicarlas sólo
   después de confirmarlas; por ejemplo, omitir una categoría, empresa, fuente o
@@ -99,19 +102,20 @@ información pública y no necesita credenciales.
 
 ### Calidad de datos
 
-- [ ] Extraer `{empresa, persona, rol, tipo_cambio}` de cada oportunidad.
-- [ ] Agrupar noticias que representen el mismo evento.
-- [ ] Enriquecer entidades con país, sector y tamaño.
+- [x] Extraer `{empresa, persona, rol, tipo_cambio}` de cada oportunidad (heurístico).
+- [x] Agrupar noticias que representen el mismo evento.
+- [x] Enriquecer entidades con país, sector y tamaño (parcial, vía catálogos).
 - [ ] Crear un score comercial explicable basado en recencia, cargo, sector,
   fuente y feedback histórico.
 - [ ] Ampliar y validar cobertura de fuentes oficiales de otros países.
-- [ ] Integrar Boletín Oficial y revistas de nicho al pipeline de consolidación.
+- [x] Integrar Boletín Oficial y revistas de nicho al pipeline de consolidación.
 - [ ] Resolver acceso a Infocomercial (proxy, API alternativa o ingesta manual).
 - [ ] Mejorar extracción de entidades para titulares de marketing/gerencia general.
 
 ### Operación
 
-- [ ] Automatizar la ejecución periódica de consultas, curación y consolidación.
-- [ ] Registrar cuándo se vio cada resultado por primera y última vez.
+- [x] Automatizar consultas, curación y consolidación desde el dashboard (manual con un click).
+- [ ] Programar ejecución periódica (cron/scheduler).
+- [x] Registrar cuándo se vio cada resultado por primera y última vez (`first_seen` / `last_seen`).
 - [ ] Incorporar alertas para oportunidades nuevas con score alto.
-- [ ] Diseñar el producto y crear el scaffold de la aplicación.
+- [x] Diseñar el producto y crear el scaffold de la aplicación.
