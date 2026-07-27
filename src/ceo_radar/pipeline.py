@@ -6,7 +6,7 @@ from hashlib import sha256
 
 from ceo_radar.models import Article, Event, Run
 from ceo_radar.utils import parse_bo_date, parse_cnv_date, parse_google_date
-from ceo_radar.extraction import extract_entities_from_text, infer_country
+from ceo_radar.extraction import extract_entities_from_text, extract_entities_from_title_and_snippet, infer_country
 from ceo_radar.catalogs import get_sector_for_company, get_company_size, normalize
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -276,7 +276,40 @@ def run_pipeline() -> Run:
     for item in nicho_raw["results"]:
         published_at = parse_google_date(item["date"])
         article_id = generate_article_id(item["source_file"], item["link"])
-        extracted_data = dict(item.get("extracted_data", {}))
+        extracted_data = extract_entities_from_title_and_snippet(
+            item["title"],
+            item.get("snippet", ""),
+        )
+        stored = dict(item.get("extracted_data", {}))
+
+        for key, value in stored.items():
+            if key == "confidence":
+                stored_confidence = value if isinstance(value, dict) else {}
+                extracted_data.setdefault("confidence", {}).update(
+                    {
+                        conf_key: conf_value
+                        for conf_key, conf_value in stored_confidence.items()
+                        if conf_key not in extracted_data.get("confidence", {})
+                    }
+                )
+            elif not extracted_data.get(key):
+                extracted_data[key] = value
+
+        catalog_country = extracted_data.get("country")
+        country = infer_country(
+            source=item["source_file"],
+            company=extracted_data.get("company"),
+            url=item["link"],
+            catalog_country=catalog_country,
+        )
+        if country:
+            extracted_data["country"] = country
+            extracted_data.setdefault("confidence", {})["country"] = (
+                "alta" if catalog_country else "media"
+            )
+        elif not extracted_data.get("country"):
+            extracted_data["country"] = "argentina"
+            extracted_data.setdefault("confidence", {})["country"] = "media"
 
         company_name = extracted_data.get("company")
         if company_name and company_name != "Desconocida":

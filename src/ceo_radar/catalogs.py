@@ -85,6 +85,25 @@ DOMAIN_COUNTRY: Dict[str, str] = {
     ".ar": "argentina",
 }
 
+# Sufijos geográficos en nombres de empresa/filial -> país
+COUNTRY_SUFFIXES: Dict[str, str] = {
+    "argentina": "argentina",
+    "brasil": "brasil",
+    "brazil": "brasil",
+    "chile": "chile",
+    "mexico": "mexico",
+    "peru": "peru",
+    "colombia": "colombia",
+    "espana": "espana",
+    "españa": "espana",
+    "puerto rico": "puerto rico",
+    "south latam": "latam",
+    "latinoamerica": "latam",
+    "latinoamérica": "latam",
+    "global": "global",
+    "dach": "dach",
+}
+
 # Catálogo de empresas por sector (enriquecimiento opcional)
 SECTOR_CATALOG: Dict[str, List[str]] = {
     "construccion": [
@@ -128,6 +147,15 @@ def find_known_company(text: str) -> Optional[tuple[str, str]]:
 
 def get_country_for_company(company_name: str) -> Optional[str]:
     return LATAM_COMPANIES.get(normalize(company_name))
+
+
+def get_country_from_company_suffix(company_name: str) -> Optional[str]:
+    """Deriva país desde sufijos geográficos en el nombre de empresa."""
+    normalized = normalize(company_name)
+    for suffix in sorted(COUNTRY_SUFFIXES.keys(), key=len, reverse=True):
+        if normalized == suffix or normalized.endswith(f" {suffix}"):
+            return COUNTRY_SUFFIXES[suffix]
+    return None
 
 
 def get_country_from_url(url: str) -> Optional[str]:

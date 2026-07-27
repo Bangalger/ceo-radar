@@ -69,8 +69,8 @@ información pública y no necesita credenciales.
   no CEO.
 - Infocomercial bloquea scraping automatizado (HTTP 403). Adlatina funciona pero
   cubre principalmente marketing/comunicaciones, no construcción.
-- La extracción de entidades desde revistas de nicho aún es débil para roles
-  fuera del patrón construcción (muchas detecciones con confianza baja).
+- La extracción de roles en titulares de marketing sigue siendo débil para cargos
+  como CMO, head de marketing o gerenta general (muchas detecciones con confianza baja).
 
 ## Próximos pasos
 

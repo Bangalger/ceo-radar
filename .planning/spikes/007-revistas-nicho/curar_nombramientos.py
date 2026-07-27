@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "src"))
 
-from ceo_radar.extraction import extract_entities_from_text  # noqa: E402
+from ceo_radar.extraction import extract_entities_from_title_and_snippet  # noqa: E402
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 SOURCES = (
@@ -112,12 +112,13 @@ def main() -> None:
         if date and not is_current_year(date):
             continue
 
-        extracted = extract_entities_from_text(f"{title} {snippet}")
+        extracted = extract_entities_from_title_and_snippet(title, snippet)
         if not has_extractable_signal(extracted):
             continue
 
-        extracted.setdefault("country", "argentina")
-        extracted.setdefault("confidence", {})["country"] = "media"
+        if not extracted.get("country"):
+            extracted["country"] = "argentina"
+            extracted.setdefault("confidence", {})["country"] = "media"
 
         curated.append(
             {
