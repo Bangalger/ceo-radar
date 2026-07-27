@@ -2,15 +2,11 @@
 
 from __future__ import annotations
 
-import json
 from datetime import datetime
-from pathlib import Path
 from typing import Optional
 
+from ceo_radar.db import get_feedback_collection
 from ceo_radar.models import Feedback
-
-ROOT = Path(__file__).resolve().parents[3]
-FEEDBACK_FILE = ROOT / "data" / "feedback.json"
 
 LOCAL_USER_ID = "local"
 
@@ -53,31 +49,15 @@ REASON_LABELS: dict[str, str] = {
 }
 
 
-def get_feedback_file() -> Path:
-    return FEEDBACK_FILE
-
-
-def _ensure_feedback_dir() -> None:
-    FEEDBACK_FILE.parent.mkdir(parents=True, exist_ok=True)
+def _doc_to_feedback(doc: dict) -> Feedback:
+    payload = {key: value for key, value in doc.items() if key != "_id"}
+    return Feedback(**payload)
 
 
 def load_feedback_log() -> list[Feedback]:
-    if not FEEDBACK_FILE.exists():
-        return []
-    data = json.loads(FEEDBACK_FILE.read_text(encoding="utf-8"))
-    return [Feedback(**entry) for entry in data.get("entries", [])]
-
-
-def save_feedback_log(entries: list[Feedback]) -> None:
-    _ensure_feedback_dir()
-    FEEDBACK_FILE.write_text(
-        json.dumps(
-            {"entries": [entry.model_dump(mode="json") for entry in entries]},
-            ensure_ascii=False,
-            indent=2,
-        ),
-        encoding="utf-8",
-    )
+    collection = get_feedback_collection()
+    docs = collection.find().sort("timestamp", 1)
+    return [_doc_to_feedback(doc) for doc in docs]
 
 
 def latest_status_by_event() -> dict[str, Feedback]:
@@ -124,9 +104,7 @@ def submit_feedback(
         timestamp=datetime.now(),
     )
 
-    entries = load_feedback_log()
-    entries.append(entry)
-    save_feedback_log(entries)
+    get_feedback_collection().insert_one(entry.model_dump(mode="json"))
     return entry
 
 
@@ -136,12 +114,23 @@ def is_rejected(event_id: str, latest_by_event: Optional[dict[str, Feedback]] = 
     return entry is not None and entry.status == "no_relevante"
 
 
-def get_latest_feedback(event_id: str, latest_by_event: Optional[dict[str, Feedback]] = None) -> Optional[Feedback]:
+def get_latest_feedback(
+    event_id: str,
+    latest_by_event: Optional[dict[str, Feedback]] = None,
+) -> Optional[Feedback]:
     latest = latest_by_event or latest_status_by_event()
     return latest.get(event_id)
 
 
-def get_feedback_file_mtime() -> float:
-    if not FEEDBACK_FILE.exists():
-        return 0.0
-    return FEEDBACK_FILE.stat().st_mtime
+def get_feedback_version() -> tuple[int, str]:
+    """Versión liviana del log de feedback para invalidar caché en la UI."""
+    collection = get_feedback_collection()
+    count = collection.count_documents({})
+    if count == 0:
+        return 0, ""
+
+    latest = collection.find_one({}, sort=[("timestamp", -1)], projection={"timestamp": 1})
+    max_timestamp = latest["timestamp"] if latest else ""
+    if isinstance(max_timestamp, datetime):
+        max_timestamp = max_timestamp.isoformat()
+    return count, str(max_timestamp)

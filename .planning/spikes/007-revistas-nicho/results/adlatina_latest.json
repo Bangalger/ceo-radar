@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T00:14:57.601171+00:00",
+  "generated_at": "2026-07-27T20:00:03.687601+00:00",
   "scope": "Nombramientos ejecutivos en marketing, comunicación y negocios publicados en Marketers by Adlatina. Foco inicial: Argentina y Latam.",
   "source_url": "https://www.marketersbyadlatina.com/categoria/nombramientos",
   "access_status": "ok",
@@ -27,6 +27,16 @@
   ],
   "unique_result_count": 60,
   "results": [
+    {
+      "market": "latam_es",
+      "page": "1",
+      "query": "nombramientos",
+      "title": "Adriana Schütte fue ascendida en Mattel",
+      "source": "Marketers by Adlatina",
+      "date": "07/27/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14840_adriana-schutte-fue-ascendida-en-mattel",
+      "snippet": "La marketer proveniente de General Motors, asumió el cargo de head of global marketing activation de la categoría juegos en la filial mexicana de la empresa de juguetes. Antes había estado dos años como senior director marketing para la región."
+    },
     {
       "market": "latam_es",
       "page": "1",
@@ -139,7 +149,7 @@
     },
     {
       "market": "latam_es",
-      "page": "1",
+      "page": "2",
       "query": "nombramientos",
       "title": "Yulia Elchenko asumió la dirección de marketing de Heineken DACH",
       "source": "Marketers by Adlatina",
@@ -259,7 +269,7 @@
     },
     {
       "market": "latam_es",
-      "page": "2",
+      "page": "3",
       "query": "nombramientos",
       "title": "Bruno Cardinali es el nuevo CMO de Pura Vida Miami",
       "source": "Marketers by Adlatina",
@@ -379,7 +389,7 @@
     },
     {
       "market": "latam_es",
-      "page": "3",
+      "page": "4",
       "query": "nombramientos",
       "title": "Isabel Briceño se incorpora a McDonald’s Perú",
       "source": "Marketers by Adlatina",
@@ -499,7 +509,7 @@
     },
     {
       "market": "latam_es",
-      "page": "4",
+      "page": "5",
       "query": "nombramientos",
       "title": "Jean Carlo Clavel empezó en un nuevo puesto en Walmart",
       "source": "Marketers by Adlatina",
@@ -616,16 +626,6 @@
       "date": "04/30/2026",
       "link": "https://www.marketersbyadlatina.com/articulo/14527_ronald-morillo-felix-empezo-en-un-nuevo-puesto-en-zte-corporation",
       "snippet": "Después de menos de un año como head of marketing para Ecuador y Bolivia, Morillo Felix incorpora a su scope el mercado de Chile. En total lleva dos años trabajando para ZTE Corporation."
-    },
-    {
-      "market": "latam_es",
-      "page": "5",
-      "query": "nombramientos",
-      "title": "Mónica Albuquerque empieza en un nuevo puesto en Disney+ Brasil",
-      "source": "Marketers by Adlatina",
-      "date": "04/29/2026",
-      "link": "https://www.marketersbyadlatina.com/articulo/14523_monica-albuquerque-empieza-en-un-nuevo-puesto-en-disney-brasil",
-      "snippet": "Sobre su nombramiento, Daniel Burman —head de original content Latam, a quien reportará— afirmó que: “Mónica es una de las ejecutivas creativas más respetadas de la industria, con una trayectoria excepcional en el desarrollo de contenido de alta calidad y gran resonancia cultural”."
     }
   ]
 }

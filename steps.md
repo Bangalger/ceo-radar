@@ -24,8 +24,9 @@ ordena todas las oportunidades desde la más reciente.
 El flujo es reproducible mediante scripts locales. Desde el dashboard Streamlit
 se puede disparar la búsqueda en todas las fuentes y la consolidación con un
 click; también sigue siendo posible correr cada script por separado. La consulta
-a SerpAPI requiere `SERPAPI_API_KEY` en `.env`. La consulta a CNV usa
-información pública y no necesita credenciales.
+a SerpAPI requiere `SERPAPI_API_KEY` en `.env`. El feedback se persiste en
+MongoDB Atlas (`MONGODB_URI`). La consulta a CNV usa información pública y no
+necesita credenciales.
 
 ## Estado actual
 
@@ -39,6 +40,7 @@ información pública y no necesita credenciales.
 - [x] Spike revistas de nicho (007): Marketers by Adlatina + intento Infocomercial.
 - [x] Curación de nombramientos desde revistas de nicho (`curadas.json`).
 - [x] Orquestación de fuentes desde el dashboard (`refresh_service.py` + botón en `app.py`).
+- [x] Persistencia de feedback en MongoDB Atlas (`ceo_radar.feedback`).
 
 ## Spikes Argentina (2026-07-25)
 
@@ -74,6 +76,9 @@ información pública y no necesita credenciales.
   cubre principalmente marketing/comunicaciones, no construcción.
 - La extracción de roles en titulares de marketing sigue siendo débil para cargos
   como CMO, head de marketing o gerenta general (muchas detecciones con confianza baja).
+- Los eventos consolidados siguen en archivos locales (`.planning/results/`); solo
+  el feedback persiste en MongoDB. En Streamlit Cloud hay que correr el refresh al
+  menos una vez por sesión de contenedor para tener datos de eventos.
 
 ## Próximos pasos
 
@@ -89,7 +94,7 @@ información pública y no necesita credenciales.
   relevante, noticia vieja, empresa fuera del mercado objetivo, duplicado,
   cambio sin intención comercial u otro.
 - [x] Generar un identificador estable para cada resultado y persistir las
-  decisiones en un archivo local, por ejemplo `feedback.json`.
+  decisiones en MongoDB (`ceo_radar.feedback`).
 - [x] Mantener en el feedback el estado, motivo, comentario, fecha y regla
   sugerida, sin modificar el resultado original.
 - [x] Ocultar resultados rechazados en la vista normal, conservándolos para

@@ -16,7 +16,7 @@ empresas de Latinoamérica que puedan abrir una ventana comercial.
    - Genera `.planning/results/oportunidades_unificadas.json`.
 3. **Muestra** los resultados en un dashboard Streamlit (`app.py`) donde se puede
    marcar cada evento como buen candidato / revisar / no relevante, con motivo y
-   comentario. El feedback se guarda en `data/feedback.json`.
+   comentario. El feedback se persiste en **MongoDB Atlas** (`ceo_radar.feedback`).
    Desde el sidebar se puede **buscar y actualizar todas las fuentes** con un
    click (dispara los scripts de cada fuente y luego consolida), o **remezclar
    datos existentes** sin volver a consultar fuentes externas.
@@ -32,6 +32,7 @@ src/ceo_radar/
   extraction.py         Heurísticas de extracción de empresa/persona/rol/país
   catalogs.py           Catálogos de empresas, sectores y países conocidos
   utils.py              Parsers de fecha por fuente
+  db.py                 Conexión a MongoDB Atlas
   services/             Carga de eventos, refresh de fuentes y feedback
 .planning/spikes/       Scripts exploratorios por fuente (uno por spike)
 .planning/results/      Salida consolidada del pipeline (generada, no versionada)
@@ -43,7 +44,7 @@ tests/                  Tests de extracción
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env   # completar SERPAPI_API_KEY si se van a correr los spikes de noticias
+cp .env.example .env   # completar SERPAPI_API_KEY y MONGODB_URI
 ```
 
 Generar los datos consolidados:
@@ -74,6 +75,7 @@ pytest
 
 - [x] Extracción y consolidación de 4 fuentes en un único JSON de eventos.
 - [x] Dashboard con feedback por evento (estado, motivo, comentario) y vista de auditoría.
+- [x] Feedback persistente en MongoDB Atlas (sobrevive redeploys en Streamlit Cloud).
 - [x] Curación heurística por sector, rol, país y año vigente.
 - [x] Actualización de fuentes desde el dashboard (un click; no programada).
 - [ ] Reglas automáticas a partir del feedback acumulado.

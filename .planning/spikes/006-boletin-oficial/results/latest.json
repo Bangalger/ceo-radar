@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-07-26T00:13:11.742172+00:00",
+  "fetched_at": "2026-07-27T19:59:47.157115+00:00",
   "source": "Boletín Oficial de la República Argentina — Sección 2",
   "source_url": "https://www.boletinoficial.gob.ar/busquedaAvanzada/index",
   "year": 2026,
@@ -50,22 +50,22 @@
     {
       "strategy": "texto_libre",
       "query": "DESIGNACION DE AUTORIDADES",
-      "result_count": 241
+      "result_count": 240
     },
     {
       "strategy": "texto_libre",
       "query": "GERENTE GENERAL",
-      "result_count": 591
+      "result_count": 587
     },
     {
       "strategy": "texto_libre",
       "query": "PRESIDENTE",
-      "result_count": 5944
+      "result_count": 5928
     },
     {
       "strategy": "texto_libre",
       "query": "DIRECTORIO",
-      "result_count": 4920
+      "result_count": 4901
     },
     {
       "strategy": "empresa_conocida",
@@ -73,7 +73,7 @@
       "result_count": 5
     }
   ],
-  "raw_candidate_count": 222,
+  "raw_candidate_count": 219,
   "result_count": 40,
   "relevant_count": 37,
   "noise_count": 3,
@@ -81,9 +81,9 @@
     "hypothesis": "Podemos identificar cambios de CEO/autoridades a través del Boletín Oficial",
     "validated": true,
     "confidence": "alta",
-    "summary": "Se encontraron 37 avisos relevantes de 40 analizados (222 candidatos en búsqueda). La hipótesis se valida: el buscador de Sección 2 permite detectar designaciones de autoridades con empresa y texto identificables.",
+    "summary": "Se encontraron 37 avisos relevantes de 40 analizados (219 candidatos en búsqueda). La hipótesis se valida: el buscador de Sección 2 permite detectar designaciones de autoridades con empresa y texto identificables.",
     "metrics": {
-      "raw_candidates": 222,
+      "raw_candidates": 219,
       "details_fetched": 40,
       "relevant": 37,
       "noise": 3,
@@ -389,18 +389,6 @@
     {
       "strategy": "texto_libre",
       "query": "DESIGNACION DE AUTORIDADES",
-      "date": "27/04/2026",
-      "aviso_id": "A1486011",
-      "detail_url": "https://www.boletinoficial.gob.ar/detalleAviso/segunda/A1486011/20260427?busqueda=1",
-      "entity": "CIRCUNVALACIÓN S.A.",
-      "rubro": "Segunda AVISOS COMERCIALES",
-      "description": "CIRCUNVALACIÓN S.A. CUIT: 30-70823011-8 Designación de Autoridades por Acta de Asamblea General Ordinaria del 19/09/2025. Número de miembros del Directorio: 3. Presidente: Isabel Liliana Martínez, DNI.16.410.428, de nacionalidad argentina, nacida el 27/07/1963, con domicilio en la calle Jacobo Joule 5945 B Villa Belgrano, Pcia. de Córdoba. CUIL: 27-16410428-7. Vicepresidente: Gustavo Martínez DNI.20.872.974, de nacionalidad argentino, nacido el 21/08/1969, con domicilio en Carlos Andrés 7330 Arg",
-      "relevant": true,
-      "relevance": "alta"
-    },
-    {
-      "strategy": "texto_libre",
-      "query": "DESIGNACION DE AUTORIDADES",
       "date": "14/05/2026",
       "aviso_id": "A1491695",
       "detail_url": "https://www.boletinoficial.gob.ar/detalleAviso/segunda/A1491695/20260514?busqueda=1",
@@ -509,18 +497,6 @@
     {
       "strategy": "texto_libre",
       "query": "DESIGNACION DE AUTORIDADES",
-      "date": "27/04/2026",
-      "aviso_id": "A1486024",
-      "detail_url": "https://www.boletinoficial.gob.ar/detalleAviso/segunda/A1486024/20260427?busqueda=1",
-      "entity": "DINAPLAST S.A.",
-      "rubro": "Segunda AVISOS COMERCIALES",
-      "description": "30-69603482-2 Por Acta de Asamblea y Directorio ambas del 20/03/2026, se resolvió aprobar la designación de autoridades de la sociedad distribuyéndose los cargos de la siguiente manera: Presidente: Federico Carenzo; Vicepresidente: Silvio Roberto Da Silva; Director titular: Leandro Pallotto; Director Suplente: Enrique Schinelli Casares, todos con domicilio especial en Av. Córdoba 950, piso 10, C.A.B.A. Autorizado según instrumento privado Acta de Asamblea de fecha 20/03/2026 Kathia Elizabeth Lut",
-      "relevant": true,
-      "relevance": "alta"
-    },
-    {
-      "strategy": "texto_libre",
-      "query": "DESIGNACION DE AUTORIDADES",
       "date": "15/07/2026",
       "aviso_id": "A1510514",
       "detail_url": "https://www.boletinoficial.gob.ar/detalleAviso/segunda/A1510514/20260715?busqueda=1",
@@ -577,6 +553,30 @@
       "description": "CUIT 33-70781826-9.- Designación de Autoridades. Acta del 28-2-25.- Presidente: Jorge Guillermo Eduardo MINGO, DNI 17.957.299, dir.Sup: Liliana Virginia MINGO, DNI 16.930.699 Constituyen domicilio especial en Gualeguaychu 4760 de CABA.- Autorizado según instrumento privado acta ASAMBLEA de fecha 28/02/2025 Verónica Castellano - T°: 65 F°: 365 C.P.A.C.F. e. 02/06/2026 N° 37067/26 v. 02/06/2026",
       "relevant": true,
       "relevance": "alta"
+    },
+    {
+      "strategy": "texto_libre",
+      "query": "DESIGNACION DE AUTORIDADES",
+      "date": "09/06/2026",
+      "aviso_id": "A1500178",
+      "detail_url": "https://www.boletinoficial.gob.ar/detalleAviso/segunda/A1500178/20260609?busqueda=1",
+      "entity": "EXPONENCIAL 4 S.A.",
+      "rubro": "Segunda AVISOS COMERCIALES",
+      "description": "30-71084924-9 Por Asamblea General Ordinaria del 24/04/2026, se aprobó la designación de autoridades de: Presidente: Nicolás Fraschina; Vicepresidente: Carlos Maximiliano Lupo; Director Titular: Julio César van Haezevelde y Director Suplente: Juan Martín Marenco. Todos ellos constituyen domicilio especial en José A. Cabrera N° 2942, piso 6° “A”, CABA. Autorizado según instrumento privado Acta de Asamblea General Ordinaria de fecha 24/04/2026 Kathia Elizabeth Lutz - T°: 134 F°: 923 C.P.A.C.F. e. ",
+      "relevant": true,
+      "relevance": "alta"
+    },
+    {
+      "strategy": "texto_libre",
+      "query": "DESIGNACION DE AUTORIDADES",
+      "date": "01/07/2026",
+      "aviso_id": "A1507064",
+      "detail_url": "https://www.boletinoficial.gob.ar/detalleAviso/segunda/A1507064/20260701?busqueda=1",
+      "entity": "FINANCAL S.R.L.",
+      "rubro": "Segunda AVISOS COMERCIALES",
+      "description": "30711779694. Por resolución unánime de reunión de socios de fecha 27 de febrero de 2026, se resolvió la transformación de FINANCAL S.R.L. en Sociedad Anónima, pasando a denominarse FINANCAL S.A., en los términos de los artículos 74 a 81 de la Ley General de Sociedades N° 19.550. Socios: EMANUEL GUILLERMO ESTEVEZ GRECO, argentino, nacido 12/01/1977, soltero, DNI 25568895, CUIT 20255688953, empresario, domiciliado en Los Talas 301 – lote 387, Gral. Pacheco, Tigre, Prov. De Buenos Aires; ERNESTO ED",
+      "relevant": true,
+      "relevance": "media"
     }
   ]
 }

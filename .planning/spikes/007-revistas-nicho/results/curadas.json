@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T00:14:57.968502+00:00",
+  "generated_at": "2026-07-27T20:00:06.666232+00:00",
   "year": 2026,
   "scope": "Nombramientos curados desde revistas de nicho argentinas. Se incluyen resultados del año vigente con señales de rol, persona, empresa o tipo de cambio.",
   "source_stats": [
@@ -15,8 +15,55 @@
     }
   ],
   "raw_result_count": 60,
-  "curated_result_count": 20,
+  "curated_result_count": 58,
   "results": [
+    {
+      "market": "latam_es",
+      "page": "1",
+      "query": "nombramientos",
+      "title": "Adriana Schütte fue ascendida en Mattel",
+      "source": "Marketers by Adlatina",
+      "date": "07/27/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14840_adriana-schutte-fue-ascendida-en-mattel",
+      "snippet": "La marketer proveniente de General Motors, asumió el cargo de head of global marketing activation de la categoría juegos en la filial mexicana de la empresa de juguetes. Antes había estado dos años como senior director marketing para la región.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "role": "director",
+        "company": "Mattel",
+        "previous_company": "Mattel",
+        "person": "Adriana Schütte",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "1",
+      "query": "nombramientos",
+      "title": "Paula Kirton fue ascendida en Unilever Argentina",
+      "source": "Marketers by Adlatina",
+      "date": "07/24/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14835_paula-kirton-fue-ascendida-en-unilever-argentina",
+      "snippet": "En total lleva diez años en la empresa. Empezó como asistente de marketing junior para las marcas Rexona, Impulse y Patrichs. Con el tiempo, fue asistente de marketing senior de Knorr, product manager de Savora, Hellman’s y otros aderezos y gerenta de comunicaciones de Knorr, entre otros puestos.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Unilever Argentina",
+        "country": "argentina",
+        "previous_company": "Unilever Argentina",
+        "person": "Paula Kirton",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
+      }
+    },
     {
       "market": "latam_es",
       "page": "1",
@@ -30,11 +77,84 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "director",
+        "company": "Beyond One",
+        "previous_company": "Beyond One",
+        "person": "Diego Salazar",
         "confidence": {
-          "role": "baja",
+          "company": "media",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "1",
+      "query": "nombramientos",
+      "title": "Gabriela Cortés Zavala fue ascendida en Epson",
+      "source": "Marketers by Adlatina",
+      "date": "07/22/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14825_gabriela-cortes-zavala-fue-ascendida-en-epson",
+      "snippet": "Ahora es la nueva senior marketing and communications manager para Epson Sudamérica, que incluye los países de Argentina, Chile y Perú.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Epson",
+        "previous_company": "Epson",
+        "person": "Gabriela Cortés Zavala",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "1",
+      "query": "nombramientos",
+      "title": "María Anchorena empieza en un nuevo puesto en el Four Seasons Hotel Buenos Aires",
+      "source": "Marketers by Adlatina",
+      "date": "07/21/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14819_maria-anchorena-empieza-en-un-nuevo-puesto-en-el-four-seasons-hotel-buenos-aires",
+      "snippet": "Después de siete años en Polo Hub en el área de relaciones públicas, la licenciada en relaciones públicas asume el cargo de gerenta de comunicaciones y relaciones públicas del hotel.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Four Seasons Hotel Buenos Aires",
+        "previous_company": "Four Seasons Hotel Buenos Aires",
+        "person": "María Anchorena",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "1",
+      "query": "nombramientos",
+      "title": "Alejandro Welter fue ascendido en Allianz España",
+      "source": "Marketers by Adlatina",
+      "date": "07/20/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14815_alejandro-welter-fue-ascendido-en-allianz-espana",
+      "snippet": "Con más de diecisiete años de experiencia en la empresa, Welter se mudó y ocupó cargos en diferentes países de la mano de Allianz. Entre ellos, Argentina, Brasil y México.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Allianz España",
+        "country": "espana",
+        "previous_company": "Allianz España",
+        "person": "Alejandro Welter",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
       }
     },
     {
@@ -50,11 +170,14 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "director",
+        "company": "Pernod Ricard España",
+        "country": "espana",
+        "person": "Miguel Ángel Pascual",
         "confidence": {
-          "role": "baja",
-          "country": "media"
-        },
-        "country": "argentina"
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
       }
     },
     {
@@ -69,12 +192,84 @@
       "source_file": "adlatina",
       "access_status": "ok",
       "extracted_data": {
+        "company": "XP",
         "role": "director",
+        "person": "Marcelo Bronze",
         "confidence": {
+          "company": "media",
           "role": "baja",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "1",
+      "query": "nombramientos",
+      "title": "Iván Rusak fue ascendido en The Disney Walt Company a un puesto regional",
+      "source": "Marketers by Adlatina",
+      "date": "07/13/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14787_ivan-rusak-fue-ascendido-en-the-disney-walt-company-a-un-puesto-regional",
+      "snippet": "Después de tres años como marketing regional senior manager de Disney+ y canales de TV en The Walt Disney Company, asume la dirección de marketing regional de Disney+ en la empresa.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "The Disney Walt Company",
+        "previous_company": "The Disney Walt Company",
+        "person": "Iván Rusak",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "1",
+      "query": "nombramientos",
+      "title": "Chantal Goldschmidt es la nueva gerenta general de Unilever Chile",
+      "source": "Marketers by Adlatina",
+      "date": "07/09/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14783_chantal-goldschmidt-es-la-nueva-gerenta-general-de-unilever-chile",
+      "snippet": "Con poco más de quince años en el país, la Leading Women Chile 2024 pasa a asumir la gerencia general, luego de cuatro años como directora de ventas y marketing en la filial chilena. En total, lleva más de treinta años en la empresa.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Unilever Chile",
+        "country": "chile",
+        "person": "Chantal Goldschmidt",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "2",
+      "query": "nombramientos",
+      "title": "Yulia Elchenko asumió la dirección de marketing de Heineken DACH",
+      "source": "Marketers by Adlatina",
+      "date": "07/08/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14778_yulia-elchenko-asumio-la-direccion-de-marketing-de-heineken-dach",
+      "snippet": "Elchenko es directora de marketing para Heineken DACH —Alemania, Austria y Suiza— y, en simultáneo, también para Brau Union Austria; venía de ocupar al mismo puesto en Heineken Perú.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "DACH",
+        "country": "dach",
+        "previous_company": "Heineken DACH",
+        "person": "Yulia Elchenko",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
       }
     },
     {
@@ -89,9 +284,13 @@
       "source_file": "adlatina",
       "access_status": "ok",
       "extracted_data": {
+        "company": "Rubasa",
         "role": "director",
+        "person": "Diego García",
         "confidence": {
+          "company": "media",
           "role": "baja",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
@@ -110,11 +309,15 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "director",
+        "company": "PepsiCo México",
+        "country": "mexico",
+        "previous_company": "PepsiCo México",
+        "person": "Mauricio Bernal",
         "confidence": {
-          "role": "baja",
-          "country": "media"
-        },
-        "country": "argentina"
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
       }
     },
     {
@@ -130,8 +333,101 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "gerente",
+        "company": "Arca Continental Lindley",
+        "previous_company": "Arca Continental Lindley",
+        "person": "Fabricio Vega",
         "confidence": {
-          "role": "baja",
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "2",
+      "query": "nombramientos",
+      "title": "Carolina Macías González es la gerenta de marketing de Barrinolas Sapi de CV",
+      "source": "Marketers by Adlatina",
+      "date": "07/02/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14752_carolina-macias-gonzalez-es-la-gerenta-de-marketing-de-barrinolas-sapi-de-cv",
+      "snippet": "Graduada en marketing en la Universidad de Guadalajara, Macías González empezó a trabajar en Vanana Marketing como CM y, con el tiempo, se pasó a Grupo Jaloma.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "CV",
+        "person": "Carolina Macías González",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "2",
+      "query": "nombramientos",
+      "title": "Sandra Cervantes, ex Coca-Cola, es la nueva líder de marketing internacional de Botox en AbbVie",
+      "source": "Marketers by Adlatina",
+      "date": "07/01/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14748_sandra-cervantes-ex-coca-cola-es-la-nueva-lider-de-marketing-internacional-de-botox-en-abbvie",
+      "snippet": "Empezó su carrera en The Coca-Cola Company como interactive marketing trainee y, tras doce años se retiró como gerenta de marketing para Femsa. En el interín pasó por marcas como Danone, Sanofi y Opella.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "AbbVie",
+        "previous_company": "AbbVie",
+        "confidence": {
+          "company": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "2",
+      "query": "nombramientos",
+      "title": "Manuela Bergonzoli empezó en un nuevo puesto en Viterbit España",
+      "source": "Marketers by Adlatina",
+      "date": "06/30/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14740_manuela-bergonzoli-empezo-en-un-nuevo-puesto-en-viterbit-espana",
+      "snippet": "Con más de seis años de experiencia en Cabify, Bergonzoli empieza una nueva etapa como head of marketing en Viterbit. A lo largo de su recorrido profesional pasó por empresas como Groupe SEB y Philip Morris International.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Viterbit España",
+        "country": "espana",
+        "previous_company": "Viterbit España",
+        "person": "Manuela Bergonzoli",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "2",
+      "query": "nombramientos",
+      "title": "Juan Mignaquy fue ascendido en Mondelēz International",
+      "source": "Marketers by Adlatina",
+      "date": "06/29/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14733_juan-mignaquy-fue-ascendido-en-mondel-z-international",
+      "snippet": "Luego de dos años como senior marketing manager de bebidas energéticas y alimentos en la empresa asume el puesto de senior marketing manager de gomitas y caramelos para el Cono Sur. Entre otras compañías, trabajó para Diageo, Grupo Cepas y B. Braun Medical.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Mondelēz International",
+        "previous_company": "Mondelēz International",
+        "person": "Juan Mignaquy",
+        "confidence": {
+          "company": "media",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
@@ -150,8 +446,9 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "director",
+        "company": "Warner Bros Discovery",
         "confidence": {
-          "role": "baja",
+          "company": "media",
           "country": "media"
         },
         "country": "argentina"
@@ -170,8 +467,12 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "gerente",
+        "company": "un nuevo puesto en Alicorp",
+        "previous_company": "un nuevo puesto en Alicorp",
+        "person": "Andrea Rojas Bravo",
         "confidence": {
-          "role": "baja",
+          "company": "media",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
@@ -180,6 +481,52 @@
     {
       "market": "latam_es",
       "page": "2",
+      "query": "nombramientos",
+      "title": "Catalina Restrepo Díez fue ascendida en Essity después de un año y medio",
+      "source": "Marketers by Adlatina",
+      "date": "06/24/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14721_catalina-restrepo-diez-fue-ascendida-en-essity-despues-de-un-ano-y-medio",
+      "snippet": "Antes trabajaba como senior trade marketing manager de Latam y el Cono Norte. Ahora es la nueva senior trade marketing de la empresa. En total, lleva más de veinte años en Essity.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Essity",
+        "previous_company": "Essity",
+        "person": "Catalina Restrepo Díez",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "2",
+      "query": "nombramientos",
+      "title": "Mariana Antenucci fue ascendida en The Walt Disney Company Latinoamérica",
+      "source": "Marketers by Adlatina",
+      "date": "06/23/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14714_mariana-antenucci-fue-ascendida-en-the-walt-disney-company-latinoamerica",
+      "snippet": "En total lleva diez años en la empresa y empezó como coordinadora de medios publicitarios de Disney Media+.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "The Walt Disney Company Latinoamérica",
+        "country": "latam",
+        "previous_company": "The Walt Disney Company Latinoamérica",
+        "person": "Mariana Antenucci",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "3",
       "query": "nombramientos",
       "title": "Bruno Cardinali es el nuevo CMO de Pura Vida Miami",
       "source": "Marketers by Adlatina",
@@ -190,8 +537,78 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "director",
+        "company": "Pura Vida Miami",
+        "previous_company": "Pura Vida Miami",
+        "person": "Bruno Cardinali",
         "confidence": {
-          "role": "baja",
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "3",
+      "query": "nombramientos",
+      "title": "Lorena Bravo tiene un nuevo puesto en Google",
+      "source": "Marketers by Adlatina",
+      "date": "06/19/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14706_lorena-bravo-tiene-un-nuevo-puesto-en-google",
+      "snippet": "Tras un año como comms & marketing lead Latam, Bravo pasó a asumir el puesto de head of security Latam de Google. En sus inicios, trabajó diez años en Oracle. Hace tres años fundó la red de ciberseguridad e IA Women CISO, que actualmente dirige.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Google",
+        "previous_company": "Google",
+        "person": "Lorena Bravo",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "3",
+      "query": "nombramientos",
+      "title": "René Orlando Rivera empezó en un nuevo puesto en Hyatt Inclusive Collection Americas en México",
+      "source": "Marketers by Adlatina",
+      "date": "06/18/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14701_rene-orlando-rivera-empezo-en-un-nuevo-puesto-en-hyatt-inclusive-collection-americas-en-mexico",
+      "snippet": "Dedicó gran parte de su carrera al marketing hotelero. A lo largo de su recorrido profesional pasó por JW Marriott, W PUnta de Mita y Kempinski Hotel, entre otros.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "México",
+        "country": "mexico",
+        "previous_company": "Hyatt Inclusive Collection Americas en",
+        "person": "René Orlando Rivera",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "3",
+      "query": "nombramientos",
+      "title": "Carla Forte se despide de Unilever tras diez años y empieza una nueva etapa en Itaú Brasil",
+      "source": "Marketers by Adlatina",
+      "date": "06/17/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14696_carla-forte-se-despide-de-unilever-tras-diez-anos-y-empieza-una-nueva-etapa-en-itau-brasil",
+      "snippet": "Durante ocho años fue tenista profesional y compitió en la World Tennis Association, hasta que en 2013 se retiró del deporte y estudió marketing en la Universidad Presbiteriana Mackenzie. A partir de entonces, trabajó en algunas empresas, entre ellas Unilever, donde estuvo más de diez años.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Unilever",
+        "confidence": {
+          "company": "media",
           "country": "media"
         },
         "country": "argentina"
@@ -210,8 +627,33 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "director",
+        "company": "Hyatt Regency Grand Reserve de Puerto",
+        "person": "Armando Emanuelli",
         "confidence": {
-          "role": "baja",
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "3",
+      "query": "nombramientos",
+      "title": "Giovanna Bressane Gomes es la nueva CMO global de Omo",
+      "source": "Marketers by Adlatina",
+      "date": "06/15/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14683_giovanna-bressane-gomes-es-la-nueva-cmo-global-de-omo",
+      "snippet": "La ex vicepresidenta de marketing de Omo, Comfort y Cif para las Américas ahora asume el liderazgo global de la marca de jabón para la ropa, tras cuatro años en su puesto anterior.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Omo",
+        "person": "Giovanna Bressane Gomes",
+        "confidence": {
+          "company": "media",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
@@ -230,8 +672,216 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "director",
+        "company": "Changan Autocom",
+        "previous_company": "Changan Autocom",
+        "person": "Jorge Zambrano",
         "confidence": {
-          "role": "baja",
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "3",
+      "query": "nombramientos",
+      "title": "Deyanira Zúñiga empezó en un nuevo puesto en Bio Zoo",
+      "source": "Marketers by Adlatina",
+      "date": "06/11/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14677_deyanira-zuniga-empezo-en-un-nuevo-puesto-en-bio-zoo",
+      "snippet": "Tras medio año como gerenta comercial y de marketing en Del Toro Agrovet, Zúñiga empieza como gerenta de marketing AC para Bio Zoo.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Bio Zoo",
+        "previous_company": "Bio Zoo",
+        "person": "Deyanira Zúñiga",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "3",
+      "query": "nombramientos",
+      "title": "Carolina Velandia Espinel cambió de categoría en Colgate Palmolive",
+      "source": "Marketers by Adlatina",
+      "date": "06/10/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14671_carolina-velandia-espinel-cambio-de-categoria-en-colgate-palmolive",
+      "snippet": "En total lleva casi cuatro años en la empresa. Durante más de tres y medio fue directora de marketing de home care para la región Andina y, ahora, asume el mismo cargo para la categoría de cuidado personal.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Colgate Palmolive",
+        "previous_company": "Colgate Palmolive",
+        "person": "Carolina Velandia Espinel",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "3",
+      "query": "nombramientos",
+      "title": "Gonzalo Saiz llega a Unicaja como head de marketing",
+      "source": "Marketers by Adlatina",
+      "date": "06/09/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14665_gonzalo-saiz-llega-a-unicaja-como-head-de-marketing",
+      "snippet": "El ex CMO de Bankinter viene de resultar incluido varias veces, en los Agency Scope que elaboró Scopen en los últimos años, en el podio de los marketers más admirados del país.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Unicaja",
+        "person": "Gonzalo Saiz",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "3",
+      "query": "nombramientos",
+      "title": "Carolina Camogliano es la nueva gerenta de marketing y trade marketing en Virutex Ilko, en Perú",
+      "source": "Marketers by Adlatina",
+      "date": "06/08/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14660_carolina-camogliano-es-la-nueva-gerenta-de-marketing-y-trade-marketing-en-virutex-ilko-en-peru",
+      "snippet": "En total lleva casi seis años trabajando para Virutex Ilko. Al principio fue brand manager por dos años y medio y, antes de su puesto actual, fue subgerenta de marketing por tres años.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Virutex Ilko",
+        "person": "Carolina Camogliano",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "3",
+      "query": "nombramientos",
+      "title": "Rocío Grillo Gálvez empezó en un nuevo puesto en Kia Perú",
+      "source": "Marketers by Adlatina",
+      "date": "06/05/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14655_rocio-grillo-galvez-empezo-en-un-nuevo-puesto-en-kia-peru",
+      "snippet": "Ahora es la head of communications de la marca. Antes estuvo ocho años en Gildemeister Perú, donde estuvo a cargo de las marcas Motormundo y Hyundai.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Kia Perú",
+        "country": "peru",
+        "previous_company": "Kia Perú",
+        "person": "Rocío Grillo Gálvez",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "4",
+      "query": "nombramientos",
+      "title": "Isabel Briceño se incorpora a McDonald’s Perú",
+      "source": "Marketers by Adlatina",
+      "date": "06/03/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14645_isabel-briceno-se-incorpora-a-mcdonald--s-peru",
+      "snippet": "Es la nueva gerenta de marketing y LSM, el marketing de tienda local; hasta febrero pasado había sido la head de marketing global de Grupo Aje.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "McDonald’s Perú",
+        "country": "peru",
+        "person": "Isabel Briceño",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "4",
+      "query": "nombramientos",
+      "title": "Mauricio Sepúlveda fue ascendido en Cosmética Davis",
+      "source": "Marketers by Adlatina",
+      "date": "06/02/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14640_mauricio-sepulveda-fue-ascendido-en-cosmetica-davis",
+      "snippet": "En total lleva veintitrés años en la empresa donde empezó como analista de marketing. Ahora es el nuevo subgerente de marketing de la división belleza en fragancias y maquillaje.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Cosmética Davis",
+        "previous_company": "Cosmética Davis",
+        "person": "Mauricio Sepúlveda",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "4",
+      "query": "nombramientos",
+      "title": "Vivian Aguilar Muñoz empezó en un nuevo puesto en Milano Bags",
+      "source": "Marketers by Adlatina",
+      "date": "06/01/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14634_vivian-aguilar-munoz-empezo-en-un-nuevo-puesto-en-milano-bags",
+      "snippet": "Tras haber trabajado en empresas como Brisa Perú, Beso Francés Crepería y Ten Ren Bubble Tea, Aguilar Muñoz asume la jefatura de marketing en Milano Bags.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Milano Bags",
+        "previous_company": "Milano Bags",
+        "person": "Vivian Aguilar Muñoz",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "4",
+      "query": "nombramientos",
+      "title": "Nayely Martínez Cázares empezó en un nuevo puesto en Grupo Pan Gabriel",
+      "source": "Marketers by Adlatina",
+      "date": "05/29/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14630_nayely-martinez-cazares-empezo-en-un-nuevo-puesto-en-grupo-pan-gabriel",
+      "snippet": "Llega a la empresa tras un año como trade marketing manager en Mitzu. Antes fue brand manager en Omnibus de México y en Mobility Ado.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Grupo Pan Gabriel",
+        "previous_company": "Grupo Pan Gabriel",
+        "person": "Nayely Martínez Cázares",
+        "confidence": {
+          "company": "media",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
@@ -250,8 +900,33 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "director",
+        "company": "Kellanova",
+        "person": "Omar Carrión",
         "confidence": {
-          "role": "baja",
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "4",
+      "query": "nombramientos",
+      "title": "Gabriel Ladaria deja Ikea para empezar en un nuevo puesto en el marketing de banca y seguros",
+      "source": "Marketers by Adlatina",
+      "date": "05/28/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14624_gabriel-ladaria-deja-ikea-para-empezar-en-un-nuevo-puesto-en-el-marketing-de-banca-y-seguros",
+      "snippet": "Tras diecinueve años en la empresa, de los cuales los últimos cuatro fue CMO de Ikea España, Ladaria empieza en un nuevo puesto como jefe de marcas, marketing y comunicaciones en ING España y Portugal.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "marketing de banca y seguros",
+        "person": "Gabriel Ladaria",
+        "confidence": {
+          "company": "media",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
@@ -270,8 +945,11 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "director",
+        "company": "Freddo",
+        "person": "Lucas Fernández",
         "confidence": {
-          "role": "baja",
+          "company": "media",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
@@ -289,11 +967,80 @@
       "source_file": "adlatina",
       "access_status": "ok",
       "extracted_data": {
-        "company": "Desconocida",
         "role": "gerente",
+        "company": "Grupo Inombiliario en México",
+        "country": "mexico",
+        "previous_company": "Cien Grupo Inombiliario en México",
+        "person": "David Martínez",
         "confidence": {
-          "company": "baja",
-          "role": "baja",
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "4",
+      "query": "nombramientos",
+      "title": "Willem van Dijk es el nuevo CMMO de Bauhaus España",
+      "source": "Marketers by Adlatina",
+      "date": "05/25/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14611_willem-van-dijk-es-el-nuevo-cmmo-de-bauhaus-espana",
+      "snippet": "Pasó de purchasing manager a chief merchandising and marketing officer en la empresa, después de siete años en su puesto anterior.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Bauhaus España",
+        "country": "espana",
+        "person": "Willem van Dijk",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "4",
+      "query": "nombramientos",
+      "title": "Alan Ornelas empezó a trabajar para Nettwerk Music Group",
+      "source": "Marketers by Adlatina",
+      "date": "05/22/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14604_alan-ornelas-empezo-a-trabajar-para-nettwerk-music-group",
+      "snippet": "Tras un año y medio como manager, marketing & business strategy en WK Entertainment, empezó en un nuevo puesto como regional & artist growth marketing manager en su nueva empresa.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Nettwerk Music Group",
+        "person": "Alan Ornelas",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "4",
+      "query": "nombramientos",
+      "title": "María del Pilar Fernández empezó a trabajar en Park Hyatt Riviera Maya",
+      "source": "Marketers by Adlatina",
+      "date": "05/21/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14602_maria-del-pilar-fernandez-empezo-a-trabajar-en-park-hyatt-riviera-maya",
+      "snippet": "Ahora es la nueva directora de sales marketing. Antes ocupó el mismo puesto en Hyatt Regency Mexico City, Grand Hyatt Bogotá y en el Hotel Intercontinental Cartagena de Indias.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Park Hyatt Riviera Maya",
+        "previous_company": "Park Hyatt Riviera Maya",
+        "person": "María del Pilar Fernández",
+        "confidence": {
+          "company": "media",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
@@ -311,12 +1058,85 @@
       "source_file": "adlatina",
       "access_status": "ok",
       "extracted_data": {
+        "company": "The Coca-Cola Company",
+        "previous_company": "The Coca-Cola Company",
         "role": "gerente",
+        "person": "Stefan Ivanoff",
         "confidence": {
+          "company": "media",
           "role": "baja",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "5",
+      "query": "nombramientos",
+      "title": "Jean Carlo Clavel empezó en un nuevo puesto en Walmart",
+      "source": "Marketers by Adlatina",
+      "date": "05/19/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14591_jean-carlo-clavel-empezo-en-un-nuevo-puesto-en-walmart",
+      "snippet": "En total lleva más de cinco años en la empresa. Empezó como digital marketing specialist y, tras ser digital marketing manager por tres años y medios, asume el puesto de brand marketing manager para México y Centroamérica.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "un nuevo puesto en Walmart",
+        "previous_company": "un nuevo puesto en Walmart",
+        "person": "Jean Carlo Clavel",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "5",
+      "query": "nombramientos",
+      "title": "Guadalupe Pérez Torelli es la nueva directora de marketing de Mars South Latam",
+      "source": "Marketers by Adlatina",
+      "date": "05/18/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14586_guadalupe-perez-torelli-es-la-nueva-directora-de-marketing-de-mars-south-latam",
+      "snippet": "Después de más de cinco años en Natura asume el nuevo puesto en Mars. También pasó por marcas como Avon, Mary Kay y Sodimac.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Mars South Latam",
+        "country": "latam",
+        "person": "Guadalupe Pérez Torelli",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "5",
+      "query": "nombramientos",
+      "title": "Andrea Contreras es la nueva gerenta central de contenidos y marca en Laureate Perú",
+      "source": "Marketers by Adlatina",
+      "date": "05/15/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14581_andrea-contreras-es-la-nueva-gerenta-central-de-contenidos-y-marca-en-laureate-peru",
+      "snippet": "Tras cuatro años en Grupo AJe como global head de comunicaciones digitales, empezó en un nuevo puesto en Laureate Perú. También pasó por empresas como Essity, Real Plaza y Class Complements.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Laureate Perú",
+        "country": "peru",
+        "previous_company": "Laureate Perú",
+        "person": "Andrea Contreras",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
       }
     },
     {
@@ -332,11 +1152,82 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "director",
+        "company": "Sky Airlines",
+        "previous_company": "Sky Airlines",
+        "person": "Nicolá Lamiaux",
         "confidence": {
-          "role": "baja",
+          "company": "media",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "5",
+      "query": "nombramientos",
+      "title": "Jorgelina Rodríguez fue ascendida en Mondelēz Argentina",
+      "source": "Marketers by Adlatina",
+      "date": "05/12/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14565_jorgelina-rodriguez-fue-ascendida-en-mondel-z-argentina",
+      "snippet": "Llevaba casi dos años y medio como senior brand manager de Pepitos y Oreos y ahora será líder de la categoría de jugos y premezclas.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Mondelēz Argentina",
+        "country": "argentina",
+        "previous_company": "Mondelēz Argentina",
+        "person": "Jorgelina Rodríguez",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "5",
+      "query": "nombramientos",
+      "title": "Bruno Henrique Chiappetta Rolim ahora trabaja en Nubank",
+      "source": "Marketers by Adlatina",
+      "date": "05/11/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14559_bruno-henrique-chiappetta-rolim-ahora-trabaja-en-nubank",
+      "snippet": "Se trata de su primer trabajo en banca, donde será el marketing manager de la marca. Antes ocupó puestos en empresas de consumo masivo como Nivea y Nestlé.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Nubank",
+        "previous_company": "Nubank",
+        "person": "Bruno Henrique Chiappetta Rolim",
+        "confidence": {
+          "company": "media",
+          "person": "media",
+          "country": "media"
+        },
+        "country": "argentina"
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "5",
+      "query": "nombramientos",
+      "title": "Fátima Hoorn de la Serna fue ascendida en Google Argentina",
+      "source": "Marketers by Adlatina",
+      "date": "05/08/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14556_fatima-hoorn-de-la-serna-fue-ascendida-en-google-argentina",
+      "snippet": "En su segundo paso por la empresa —antes fue pasante en el área de marketing durante menos de un año— regresó como associate product marketing manager. El mes pasado fue ascendida a product marketing manager.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Google Argentina",
+        "country": "argentina",
+        "previous_company": "Google Argentina",
+        "confidence": {
+          "company": "media",
+          "country": "media"
+        }
       }
     },
     {
@@ -352,11 +1243,38 @@
       "access_status": "ok",
       "extracted_data": {
         "role": "director",
+        "company": "Unilever Global",
+        "country": "global",
+        "previous_company": "Unilever Global",
+        "person": "Guilherme Moraes",
         "confidence": {
-          "role": "baja",
-          "country": "media"
-        },
-        "country": "argentina"
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
+      }
+    },
+    {
+      "market": "latam_es",
+      "page": "5",
+      "query": "nombramientos",
+      "title": "Sachiko Sato fue ascendida en Oregon Foods Perú",
+      "source": "Marketers by Adlatina",
+      "date": "05/06/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14544_sachiko-sato-fue-ascendida-en-oregon-foods-peru",
+      "snippet": "Luego de tres años como jefa de marketing para carnes, embutidos, congelados y lácteos en la empresa, Sato fue ascendida a subgerenta de marketing. También estuvo en marcas como Mambrino, Altozano y Cineplanet.",
+      "source_file": "adlatina",
+      "access_status": "ok",
+      "extracted_data": {
+        "company": "Oregon Foods Perú",
+        "country": "peru",
+        "previous_company": "Oregon Foods Perú",
+        "person": "Sachiko Sato",
+        "confidence": {
+          "company": "media",
+          "country": "media",
+          "person": "media"
+        }
       }
     },
     {
@@ -371,11 +1289,14 @@
       "source_file": "adlatina",
       "access_status": "ok",
       "extracted_data": {
-        "role": "ceo",
+        "role": "presidente",
         "change_type": "anuncia",
+        "company": "Paypal",
+        "previous_company": "Paypal",
+        "person": "Antonio Lucio",
         "confidence": {
-          "role": "alta",
-          "change_type": "media",
+          "company": "media",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
@@ -393,13 +1314,15 @@
       "source_file": "adlatina",
       "access_status": "ok",
       "extracted_data": {
-        "company": "Lucas Fernández",
         "role": "director",
+        "company": "Grupo Lala",
+        "previous_company": "Grupo Lala",
         "change_type": "anuncia",
+        "person": "Lucas Fernández",
         "confidence": {
           "company": "media",
-          "role": "baja",
           "change_type": "media",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"
@@ -409,17 +1332,20 @@
       "market": "latam_es",
       "page": "5",
       "query": "nombramientos",
-      "title": "Mónica Albuquerque empieza en un nuevo puesto en Disney+ Brasil",
+      "title": "Ronald Morillo Felix empezó en un nuevo puesto en ZTE Corporation",
       "source": "Marketers by Adlatina",
-      "date": "04/29/2026",
-      "link": "https://www.marketersbyadlatina.com/articulo/14523_monica-albuquerque-empieza-en-un-nuevo-puesto-en-disney-brasil",
-      "snippet": "Sobre su nombramiento, Daniel Burman —head de original content Latam, a quien reportará— afirmó que: “Mónica es una de las ejecutivas creativas más respetadas de la industria, con una trayectoria excepcional en el desarrollo de contenido de alta calidad y gran resonancia cultural”.",
+      "date": "04/30/2026",
+      "link": "https://www.marketersbyadlatina.com/articulo/14527_ronald-morillo-felix-empezo-en-un-nuevo-puesto-en-zte-corporation",
+      "snippet": "Después de menos de un año como head of marketing para Ecuador y Bolivia, Morillo Felix incorpora a su scope el mercado de Chile. En total lleva dos años trabajando para ZTE Corporation.",
       "source_file": "adlatina",
       "access_status": "ok",
       "extracted_data": {
-        "change_type": "nombramiento",
+        "company": "ZTE Corporation",
+        "previous_company": "ZTE Corporation",
+        "person": "Ronald Morillo Felix",
         "confidence": {
-          "change_type": "media",
+          "company": "media",
+          "person": "media",
           "country": "media"
         },
         "country": "argentina"

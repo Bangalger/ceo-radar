@@ -165,7 +165,7 @@ st.set_page_config(layout="wide", page_title="CEO Radar Dashboard")
 
 
 @st.cache_data
-def load_events_cached(_events_mtime: float, _feedback_mtime: float):
+def load_events_cached(_events_mtime: float, _feedback_version: tuple[int, str]):
     return events_service.load_events()
 
 
@@ -213,7 +213,7 @@ if st.sidebar.button("Remezclar datos existentes (sin buscar)"):
 
 events, generated_at, source_counts, result_count = load_events_cached(
     events_service.get_events_file_mtime(),
-    feedback_service.get_feedback_file_mtime(),
+    feedback_service.get_feedback_version(),
 )
 
 latest_by_event = feedback_service.latest_status_by_event()
