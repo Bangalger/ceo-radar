@@ -1,0 +1,436 @@
+<!DOCTYPE html><html class="dark" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>CEO Radar | Executive Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#8b919c",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "inverse-primary": "#0061a5",
+                        "on-primary-fixed-variant": "#00497e",
+                        "primary": "#9fcaff",
+                        "on-primary-fixed": "#001d37",
+                        "on-background": "#e2e2e8",
+                        "inverse-surface": "#e2e2e8",
+                        "on-surface": "#e2e2e8",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "surface-container-low": "#1a1c20",
+                        "surface-container": "#1e2024",
+                        "tertiary": "#bdc7dc",
+                        "secondary-fixed-dim": "#c1c6d7",
+                        "on-secondary-fixed": "#161c27",
+                        "on-tertiary-fixed": "#121c2c",
+                        "on-primary": "#003259",
+                        "tertiary-container": "#8791a5",
+                        "on-secondary-container": "#b3b8c8",
+                        "error-container": "#93000a",
+                        "primary-container": "#4894e2",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#333539",
+                        "inverse-on-surface": "#2f3035",
+                        "primary-fixed-dim": "#9fcaff",
+                        "outline-variant": "#414751",
+                        "surface": "#111317",
+                        "on-surface-variant": "#c0c7d3",
+                        "surface-bright": "#37393e",
+                        "on-tertiary": "#273141",
+                        "secondary-fixed": "#dde2f3",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#9fcaff",
+                        "primary-fixed": "#d2e4ff",
+                        "background": "#111317",
+                        "surface-container-highest": "#333539",
+                        "tertiary-fixed": "#d9e3f9",
+                        "secondary": "#c1c6d7",
+                        "surface-dim": "#111317",
+                        "on-secondary-fixed-variant": "#414754",
+                        "on-tertiary-container": "#202a3a",
+                        "on-error": "#690005",
+                        "on-primary-container": "#002b4e",
+                        "surface-container-high": "#282a2e",
+                        "secondary-container": "#434957",
+                        "surface-container-lowest": "#0c0e12",
+                        "on-secondary": "#2a303d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-gap": "1.5rem",
+                        "input-padding": "0.75rem 1rem",
+                        "section-padding": "1.25rem",
+                        "inline-gap": "0.75rem",
+                        "container-margin": "2rem"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #111317;
+            font-family: 'Hanken Grotesk', sans-serif;
+            color: #e2e2e8;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .executive-border {
+            border: 1px solid #2d3748;
+        }
+        .glass-header {
+            background: rgba(17, 19, 23, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111317;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333539;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #414751;
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container border-r border-outline-variant flex flex-col py-8 px-4 gap-stack-gap z-50">
+<div class="mb-8 px-4">
+<h1 class="font-headline-md text-headline-md font-black text-primary">CEO Radar</h1>
+<p class="font-label-caps text-label-caps text-on-surface-variant opacity-70">Executive Intelligence</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="bg-secondary-container text-on-secondary-container rounded-lg px-4 py-2 flex items-center gap-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="radar">radar</span>
+<span class="font-label-caps text-label-caps">Radar</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high px-4 py-2 flex items-center gap-3 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-label-caps">Auditoría</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high px-4 py-2 flex items-center gap-3 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-label-caps text-label-caps">Métricas</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high px-4 py-2 flex items-center gap-3 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-caps text-label-caps">Configuración</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant flex flex-col gap-2">
+<button class="w-full py-3 bg-primary text-on-primary rounded-lg font-bold flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="refresh">refresh</span>
+                Actualizar Datos
+            </button>
+<a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high px-4 py-2 flex items-center gap-3 rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-caps text-label-caps">Soporte</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 relative flex flex-col min-w-0">
+<!-- TopAppBar -->
+<header class="glass-header sticky top-0 z-40 border-b border-outline-variant flex justify-between items-center w-full px-8 py-4">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">CEO Radar: Oportunidades Ejecutivas</span>
+<span class="bg-primary-container/20 text-primary text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded border border-primary/30">Live System</span>
+</div>
+<div class="flex items-center gap-stack-gap">
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="h-8 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-3">
+<img alt="Executive User Profile" class="h-8 w-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHdlGx1ceycCBbGOlz0lKmhPtsARULXX9Jin2liJqITZqF4YM0S1Wji9b3MfW-ER3TJdrarcgqU8Y46AMo9E4t8DvFBIVTrSDQKb52puC3zJfySHhePojA68JACNqCJrguCbPjk5x6UreTERHnAgsaypi217qF4aSiHsKrQsG03uaNSrsFqLZs4SaZFAHBYgVHHSAzkfv0Pxu0It6b4kY1yvMFt8RYEZCG4AFTCqnGU6RSmYLiR9FUegcRa0K88goXx1zELoYCFn8-">
+</div>
+</div>
+</header>
+<!-- Content Body -->
+<div class="p-8 max-w-[1400px] w-full mx-auto space-y-stack-gap">
+<!-- Metadata & Quick Metrics -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="history">history</span>
+<span class="font-label-caps text-label-caps">Última actualización: 2026-07-26 00:24:49 UTC</span>
+</div>
+</div>
+<!-- Stats Grid (Restored to original 5-column layout without extra extraction blocks) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+<div class="bg-surface-container executive-border p-4 rounded-xl flex flex-col justify-between group hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary" data-icon="visibility">visibility</span>
+<span class="text-primary text-[10px] font-bold">+12%</span>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-md text-headline-md">69</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Eventos Detectados</p>
+</div>
+</div>
+<div class="bg-surface-container executive-border p-4 rounded-xl flex flex-col justify-between group hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-tertiary" data-icon="news">news</span>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-md text-headline-md">18</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Google News</p>
+</div>
+</div>
+<div class="bg-surface-container executive-border p-4 rounded-xl flex flex-col justify-between group hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-tertiary" data-icon="gavel">gavel</span>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-md text-headline-md">37</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Boletín Oficial</p>
+</div>
+</div>
+<div class="bg-surface-container executive-border p-4 rounded-xl flex flex-col justify-between group hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-tertiary" data-icon="book">book</span>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-md text-headline-md">20</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Revistas Nicho</p>
+</div>
+</div>
+<!-- Empty/Status card to complete the row of 5 if needed, or simply maintain the 5-col grid -->
+<div class="bg-surface-container executive-border p-4 rounded-xl flex flex-col justify-between group hover:border-primary transition-colors">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary-container" data-icon="monitoring">monitoring</span>
+</div>
+<div class="mt-4">
+<h3 class="font-headline-md text-headline-md">Stable</h3>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Sistema de Red</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Events -->
+<section class="space-y-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="event_list">event_list</span>
+<h2 class="font-headline-md text-headline-md">Eventos Recientes</h2>
+</div>
+<!-- Expanded Event Item (C.A.H.N.E. GROUP S.A.) -->
+<div class="bg-surface-container-low executive-border rounded-xl overflow-hidden relative" style="--mouse-x: 641px; --mouse-y: 645.625px;">
+<!-- Collapse Button - Clearly visible -->
+<button class="absolute top-6 right-16 p-2 hover:bg-surface-variant rounded-lg transition-colors flex items-center gap-2 group">
+<span class="font-label-caps text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">Contraer Detalles</span>
+<span class="material-symbols-outlined" data-icon="expand_less">expand_less</span>
+</button>
+<div class="p-6 space-y-6">
+<!-- Event Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-outline-variant pb-6">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">C.A.H.N.E. GROUP S.A. — Nuevo director suplente</h3>
+<div class="flex items-center gap-4 mt-1">
+<span class="flex items-center gap-1 text-on-surface-variant font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span> Argentina
+                                    </span>
+<span class="text-outline text-sm">•</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">1 Noticia encontrada</span>
+</div>
+</div>
+<div class="flex gap-2">
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full font-label-caps text-label-caps">Alta Prioridad</span>
+<button class="p-2 hover:bg-surface-variant rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Main Two-Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8">
+<!-- Left Column (60%) -->
+<div class="space-y-8">
+<!-- News Highlight -->
+<div class="space-y-4">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Boletín Oficial</span>
+<span class="text-[10px] text-on-surface-variant">24 Jul 2026</span>
+</div>
+<div class="bg-surface p-6 rounded-lg executive-border">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+                                            Se designa a Sr. Jorge Valdivia como Director Suplente tras asamblea extraordinaria, notificando los cambios pertinentes ante las autoridades correspondientes. La resolución tiene vigencia inmediata para el ejercicio fiscal actual.
+                                        </p>
+</div>
+</div>
+<!-- Executive Action (Feedback Area) -->
+<div class="space-y-4">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Acción Ejecutiva</span>
+<div class="bg-surface p-6 rounded-lg executive-border space-y-6">
+<div class="bg-primary-container/10 border border-primary/30 p-4 rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5" data-icon="info" style="font-variation-settings: &quot;FILL&quot; 1;">info</span>
+<div>
+<p class="text-sm">
+<span class="text-primary font-bold">Estado vigente:</span> Buen candidato. "Posible candidato para charlar"
+                                                </p>
+<p class="text-on-surface-variant text-[11px] mt-1">Actualizado el 2026-07-27 16:15 por Sistema</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="font-label-caps text-[11px] text-on-surface-variant uppercase">Actualizar Estado</label>
+<select class="w-full bg-surface-container-highest border-outline-variant rounded-lg text-body-sm focus:ring-primary focus:border-primary py-2 px-3">
+<option selected="">Buen candidato</option>
+<option>Bajo revisión</option>
+<option>Descartado</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<label class="font-label-caps text-[11px] text-on-surface-variant uppercase">Acción Rápida</label>
+<button class="w-full py-2 bg-primary text-on-primary rounded-lg font-bold text-body-sm hover:opacity-90 transition-all">
+                                                    Guardar Cambios
+                                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (40%): Extraction Details -->
+<div class="space-y-4">
+<div class="flex items-center justify-between border-b border-outline-variant pb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Detalles de Extracción</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="code">code</span>
+</div>
+<div class="bg-surface-container-highest p-6 rounded-lg executive-border font-mono text-[13px] leading-relaxed">
+<div class="flex gap-2 mb-2">
+<span class="text-tertiary-fixed-dim">"role":</span>
+<span class="text-primary">"director suplente"</span>
+</div>
+<div class="flex gap-2 mb-2">
+<span class="text-tertiary-fixed-dim">"change_type":</span>
+<span class="text-primary">"designa"</span>
+</div>
+<div class="flex gap-2 mb-2">
+<span class="text-tertiary-fixed-dim">"company":</span>
+<span class="text-primary">"C.A.H.N.E. GROUP S.A."</span>
+</div>
+<div class="flex gap-2 mb-2">
+<span class="text-tertiary-fixed-dim">"country":</span>
+<span class="text-primary">"argentina"</span>
+</div>
+<div class="flex gap-2 mb-2">
+<span class="text-tertiary-fixed-dim">"source":</span>
+<span class="text-primary">"boletin_oficial_arg"</span>
+</div>
+<div class="flex gap-2 mb-2">
+<span class="text-tertiary-fixed-dim">"confidence":</span>
+<span class="text-primary">0.98</span>
+</div>
+<div class="flex gap-2">
+<span class="text-tertiary-fixed-dim">"timestamp":</span>
+<span class="text-primary">"2026-07-26T00:24"</span>
+</div>
+</div>
+<div class="mt-4">
+
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant"><button class="w-full py-3 bg-surface-variant hover:bg-surface-container-high border border-outline-variant rounded-lg font-bold text-body-sm transition-all flex items-center justify-center gap-2"><span class="material-symbols-outlined text-[18px]" data-icon="expand_less">expand_less</span><span class="font-label-caps text-label-caps">Contraer Detalles</span></button></div></div>
+</div>
+<!-- Other Event Items (Collapsed) -->
+<div class="grid md:grid-cols-2 gap-6">
+<div class="bg-surface-container-low executive-border rounded-xl overflow-hidden p-6 flex flex-col justify-between gap-4" style="--mouse-x: 326px; --mouse-y: 207.34375px;">
+<div class="space-y-2">
+<div><span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-label-caps text-[10px] uppercase">Pendiente</span></div>
+<h3 class="font-bold text-on-surface line-clamp-2">Empresa no identificada — Nuevo director</h3>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-caps text-[11px]"><span class="material-symbols-outlined text-sm">location_on</span> Argentina</div>
+<p class="text-error text-[11px] font-label-caps mt-1">Requiere identificación de CIF</p>
+</div>
+<button class="w-full py-2 bg-surface-variant hover:bg-primary-container/20 hover:text-primary border border-outline-variant rounded-lg font-bold text-body-sm transition-all flex items-center justify-center gap-2">
+<span class="font-label-caps text-label-caps">Expandir Detalles</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<div class="bg-surface-container-low executive-border rounded-xl overflow-hidden p-6 flex flex-col justify-between gap-4 opacity-80 grayscale-[0.5] hover:grayscale-0 hover:opacity-100 transition-all" style="--mouse-x: 387px; --mouse-y: 115.34375px;">
+<div class="space-y-2">
+<div><span class="bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-full font-label-caps text-[10px] uppercase border border-outline-variant">Archivo</span></div>
+<h3 class="font-bold text-on-surface line-clamp-2">COLUMBUS PARK S.A. — Nueva directora suplente</h3>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-caps text-[11px]"><span class="material-symbols-outlined text-sm">location_on</span> Argentina</div>
+</div>
+<button class="w-full py-2 bg-surface-variant hover:bg-primary-container/20 hover:text-primary border border-outline-variant rounded-lg font-bold text-body-sm transition-all flex items-center justify-center gap-2">
+<span class="font-label-caps text-label-caps">Expandir Detalles</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="mt-auto py-6 px-8 border-t border-outline-variant bg-surface-container-lowest">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<span class="text-[11px] font-label-caps text-on-surface-variant">© 2026 CEO Radar Intelligence Platform</span>
+<span class="text-[11px] font-label-caps text-on-surface-variant opacity-50">v4.2.0-stable</span>
+</div>
+<div class="flex gap-6">
+<a class="text-[11px] font-label-caps text-on-surface-variant hover:text-primary" href="#">Términos Legales</a>
+<a class="text-[11px] font-label-caps text-on-surface-variant hover:text-primary" href="#">Política de Datos</a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Contextual FAB -->
+<div class="fixed bottom-8 right-8 flex flex-col gap-4">
+<button class="h-14 w-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all group overflow-hidden">
+<span class="material-symbols-outlined text-3xl" data-icon="bolt">bolt</span>
+<span class="absolute -top-12 group-hover:top-0 bg-surface text-[10px] px-2 py-1 rounded transition-all">Quick Action</span>
+</button>
+</div>
+<script>
+        // Hover atmosphere effect for interactive borders
+        const cards = document.querySelectorAll('.executive-border');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+
+
+</body></html>
