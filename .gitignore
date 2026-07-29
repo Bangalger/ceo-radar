@@ -5,3 +5,4 @@ __pycache__/
 .planning/spikes/005-cnv-hechos-relevantes/results/
 .planning/results/
 data/
+.playwright/

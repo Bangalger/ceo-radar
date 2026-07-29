@@ -1,0 +1,874 @@
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap");
+
+:root {
+    --primary: #9fcaff;
+    --on-primary: #003259;
+    --primary-container: #4894e2;
+    --on-primary-container: #002b4e;
+    --secondary-container: #434957;
+    --on-secondary-container: #b3b8c8;
+    --tertiary: #bdc7dc;
+    --tertiary-fixed-dim: #bdc7dc;
+    --surface: #111317;
+    --surface-container: #1e2024;
+    --surface-container-low: #1a1c20;
+    --surface-container-high: #282a2e;
+    --surface-container-highest: #333539;
+    --surface-container-lowest: #0c0e12;
+    --surface-variant: #333539;
+    --on-surface: #e2e2e8;
+    --on-surface-variant: #c0c7d3;
+    --outline: #8b919c;
+    --outline-variant: #414751;
+    --error: #ffb4ab;
+    --executive-border: #2d3748;
+    --stack-gap: 1.5rem;
+    --radius-lg: 0.25rem;
+    --radius-xl: 0.5rem;
+}
+
+/* ── Tipografía base ─────────────────────────────────────
+   Streamlit 1.56 usa clases emotion (st-emotion-cache-*), por eso el
+   selector apunta a .stApp y descendientes en vez de [class*="css"]. */
+.stApp,
+.stApp *,
+[data-testid="stSidebar"] * {
+    font-family: "Hanken Grotesk", sans-serif;
+}
+
+/* Los iconos nativos de Streamlit (:material/*:) usan su propia fuente y la
+   regla de arriba se la pisaría, así que se restauran explícitamente. */
+[data-testid="stIconMaterial"],
+[data-testid="stExpanderToggleIcon"],
+.material-symbols-rounded {
+    font-family: "Material Symbols Rounded" !important;
+}
+
+.material-symbols-outlined {
+    font-family: "Material Symbols Outlined" !important;
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.material-symbols-outlined.filled {
+    font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.stApp {
+    background-color: var(--surface);
+    color: var(--on-surface);
+}
+
+/* ── Scrollbar ────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--surface-variant);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--outline-variant);
+}
+
+/* ── Chrome de Streamlit ──────────────────────────────────
+   El header se colapsa a altura 0 en vez de display:none para no
+   perder el control que reabre el sidebar cuando está colapsado. */
+[data-testid="stHeader"] {
+    background: transparent !important;
+    height: 0 !important;
+    min-height: 0 !important;
+}
+
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+[data-testid="stStatusWidget"] {
+    display: none !important;
+}
+
+[data-testid="stSidebarCollapsedControl"] {
+    top: 0.5rem;
+    z-index: 60;
+}
+
+.stMainBlockContainer {
+    max-width: none !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+/* ── Sidebar ──────────────────────────────────────────── */
+[data-testid="stSidebar"] {
+    background-color: var(--surface-container) !important;
+    border-right: 1px solid var(--outline-variant) !important;
+    min-width: 256px !important;
+    max-width: 256px !important;
+}
+
+[data-testid="stSidebar"] > div:first-child {
+    padding: 2rem 1rem;
+}
+
+[data-testid="stSidebar"] hr {
+    border-color: var(--outline-variant) !important;
+    margin: 1.25rem 0 !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"] p,
+[data-testid="stSidebar"] .stCaption p {
+    font-size: 11px;
+    color: var(--on-surface-variant);
+    opacity: 0.8;
+}
+
+/* Nav items: contenedores con key navactive_* / navinactive_* */
+[class*="st-key-nav"] .stButton > button {
+    width: 100%;
+    justify-content: flex-start;
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+}
+
+[class*="st-key-navactive_"] .stButton > button {
+    background-color: var(--secondary-container) !important;
+    color: var(--on-secondary-container) !important;
+}
+
+[class*="st-key-navinactive_"] .stButton > button {
+    background-color: transparent !important;
+    color: var(--on-surface-variant) !important;
+}
+
+[class*="st-key-navinactive_"] .stButton > button:hover {
+    background-color: var(--surface-container-high) !important;
+    color: var(--on-surface) !important;
+}
+
+/* CTA primaria del sidebar */
+[data-testid="stSidebar"] .stButton > button[kind="primary"] {
+    background-color: var(--primary) !important;
+    color: var(--on-primary) !important;
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    font-weight: 700 !important;
+    padding: 0.75rem 1rem !important;
+    justify-content: center;
+}
+
+[data-testid="stSidebar"] .stButton > button[kind="primary"]:hover {
+    opacity: 0.9;
+}
+
+[class*="st-key-btn_regenerate"] .stButton > button,
+[data-testid="stSidebar"] [class*="st-key-btn_regenerate"] button {
+    background-color: var(--surface-variant) !important;
+    color: var(--on-surface-variant) !important;
+    border: 1px solid var(--outline-variant) !important;
+    border-radius: var(--radius-lg) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+[class*="st-key-btn_regenerate"] .stButton > button:hover {
+    background-color: var(--surface-container-high) !important;
+    color: var(--on-surface) !important;
+}
+
+/* ── Controles de formulario ──────────────────────────── */
+.stSelectbox > div > div,
+.stTextArea textarea,
+.stTextInput input {
+    background-color: var(--surface-container-highest) !important;
+    border-color: var(--outline-variant) !important;
+    border-radius: var(--radius-lg) !important;
+    color: var(--on-surface) !important;
+}
+
+.stSelectbox > div > div:focus-within,
+.stTextArea textarea:focus,
+.stTextInput input:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 1px var(--primary) !important;
+}
+
+.stSelectbox label p,
+.stTextArea label p {
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant) !important;
+}
+
+[data-testid="stForm"] {
+    border: none !important;
+    padding: 0 !important;
+}
+
+[data-testid="stForm"] .stButton > button,
+[data-testid="stFormSubmitButton"] > button {
+    background-color: var(--primary) !important;
+    color: var(--on-primary) !important;
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    font-weight: 700 !important;
+    width: 100%;
+}
+
+[data-testid="stFormSubmitButton"] > button:hover {
+    opacity: 0.9;
+}
+
+/* ── Header glass ─────────────────────────────────────── */
+.glass-header {
+    background: rgba(17, 19, 23, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--outline-variant);
+    padding: 1rem 2rem;
+    margin: 0 -2rem 1.5rem -2rem;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+}
+
+.page-header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page-header-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.page-header-title .header-title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+    color: var(--on-surface);
+}
+
+.live-badge {
+    background: rgba(72, 148, 226, 0.2);
+    color: var(--primary);
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(159, 202, 255, 0.3);
+}
+
+/* ── Branding del sidebar ─────────────────────────────── */
+.sidebar-brand .brand-name {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--primary);
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+}
+
+.sidebar-brand p {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--on-surface-variant);
+    opacity: 0.7;
+    margin: 0 0 1.5rem 0;
+}
+
+/* ── Fila de metadata ─────────────────────────────────── */
+.meta-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--on-surface-variant);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+/* ── Grid de stats ────────────────────────────────────── */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: var(--stack-gap);
+}
+
+@media (max-width: 1200px) {
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.stat-card {
+    background: var(--surface-container);
+    border: 1px solid var(--executive-border);
+    border-radius: var(--radius-xl);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 110px;
+    transition: border-color 0.2s ease;
+}
+
+.stat-card:hover {
+    border-color: var(--primary);
+}
+
+.stat-card-icon {
+    font-size: 24px;
+}
+
+.stat-card-icon.primary {
+    color: var(--primary);
+}
+
+.stat-card-icon.tertiary {
+    color: var(--tertiary);
+}
+
+.stat-card-value {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 1rem 0 0 0;
+    color: var(--on-surface);
+}
+
+.stat-card-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--on-surface-variant);
+    margin: 0.25rem 0 0 0;
+}
+
+/* ── Títulos de sección ───────────────────────────────── */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-title .material-symbols-outlined {
+    color: var(--primary);
+}
+
+.section-title .section-heading {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+    color: var(--on-surface);
+}
+
+.section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+}
+
+/* ── Card de evento expandido ─────────────────────────────
+   El contenedor real es st.container(key="eventcard_<id>"). */
+[class*="st-key-eventcard_"] {
+    background: var(--surface-container-low);
+    border: 1px solid var(--executive-border);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    margin-bottom: var(--stack-gap);
+}
+
+[class*="st-key-eventcard_arch_"] {
+    opacity: 0.85;
+    filter: grayscale(0.4);
+}
+
+.event-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-bottom: 1px solid var(--outline-variant);
+    padding-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .event-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.event-header-title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0;
+    color: var(--on-surface);
+}
+
+.event-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.event-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--on-surface-variant);
+}
+
+.event-meta-dot {
+    color: var(--outline);
+    font-size: 14px;
+}
+
+.event-dates {
+    font-size: 11px;
+    color: var(--on-surface-variant);
+    opacity: 0.7;
+    margin: 0.5rem 0 0 0;
+}
+
+.event-header-badges {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ── Badges ───────────────────────────────────────────── */
+.badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 9999px;
+}
+
+.badge-pending {
+    background: var(--secondary-container);
+    color: var(--on-secondary-container);
+}
+
+.badge-good {
+    background: var(--primary-container);
+    color: var(--on-primary-container);
+}
+
+.badge-review {
+    background: rgba(159, 202, 255, 0.15);
+    color: var(--primary);
+    border: 1px solid rgba(159, 202, 255, 0.3);
+}
+
+.badge-archive {
+    background: var(--surface-variant);
+    color: var(--on-surface-variant);
+    border: 1px solid var(--outline-variant);
+}
+
+/* ── Bloque de noticia ────────────────────────────────── */
+.news-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--outline-variant);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.news-block-date {
+    font-size: 10px;
+    color: var(--on-surface-variant);
+}
+
+.news-block-content {
+    background: var(--surface);
+    border: 1px solid var(--executive-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+}
+
+.news-block-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--on-surface);
+    margin: 0;
+}
+
+.news-block-content a,
+.extra-articles a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.news-block-content a:hover,
+.extra-articles a:hover {
+    text-decoration: underline;
+}
+
+.extra-articles {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--outline-variant);
+}
+
+.extra-articles-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--on-surface-variant);
+    margin-bottom: 0.5rem;
+}
+
+.extra-articles ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.extra-articles li {
+    font-size: 14px;
+    margin-bottom: 0.25rem;
+}
+
+/* ── Banner de feedback ───────────────────────────────── */
+.feedback-banner {
+    background: rgba(72, 148, 226, 0.1);
+    border: 1px solid rgba(159, 202, 255, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.feedback-banner .material-symbols-outlined {
+    color: var(--primary);
+    margin-top: 2px;
+}
+
+.feedback-banner-text {
+    font-size: 14px;
+    color: var(--on-surface);
+    margin: 0;
+}
+
+.feedback-banner-text strong {
+    color: var(--primary);
+}
+
+.feedback-banner-meta {
+    font-size: 11px;
+    color: var(--on-surface-variant);
+    margin: 0.25rem 0 0 0;
+}
+
+/* ── Panel de acción ejecutiva ────────────────────────────
+   Contenedor real: st.container(key="action_<id>"). */
+.action-section-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+[class*="st-key-action_"] {
+    background: var(--surface);
+    border: 1px solid var(--executive-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+}
+
+/* ── Panel de extracción ──────────────────────────────── */
+.extraction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--outline-variant);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.extraction-panel {
+    background: var(--surface-container-highest);
+    border: 1px solid var(--executive-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 520px;
+}
+
+.extraction-panel,
+.extraction-panel * {
+    font-family: "SF Mono", "Cascadia Mono", Consolas, "Courier New", monospace !important;
+}
+
+.extraction-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.extraction-key {
+    color: var(--tertiary-fixed-dim);
+    white-space: nowrap;
+}
+
+.extraction-value {
+    color: var(--primary);
+    word-break: break-word;
+}
+
+/* ── Cards colapsadas ─────────────────────────────────────
+   Contenedor real: st.container(key="collapsed_<id>") dentro
+   de st.container(horizontal=True, key="collapsedgrid").
+   Se fuerza CSS Grid (en vez de flex) para que la última card
+   de una fila incompleta no se estire al hueco restante. */
+[class*="st-key-collapsedgrid"] {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+}
+
+[class*="st-key-collapsedgrid"] > div {
+    flex: none !important;
+    width: auto !important;
+    max-width: none;
+    min-width: 0;
+}
+
+[class*="st-key-collapsed_"] {
+    background: var(--surface-container-low);
+    border: 1px solid var(--executive-border);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 200px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+[class*="st-key-collapsed_arch_"] {
+    opacity: 0.8;
+    filter: grayscale(0.5);
+    transition: all 0.2s ease;
+}
+
+[class*="st-key-collapsed_arch_"]:hover {
+    opacity: 1;
+    filter: grayscale(0);
+}
+
+.collapsed-card-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--on-surface);
+    margin: 0.6rem 0 0.4rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.collapsed-card-error {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--error);
+    margin: 0.5rem 0 0 0;
+}
+
+/* Botones expandir / contraer */
+[class*="st-key-collapsed_"] .stButton > button,
+[class*="st-key-collapsebtn_"] .stButton > button {
+    width: 100%;
+    background-color: var(--surface-variant) !important;
+    color: var(--on-surface) !important;
+    border: 1px solid var(--outline-variant) !important;
+    border-radius: var(--radius-lg) !important;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    transition: all 0.2s ease;
+}
+
+[class*="st-key-collapsed_"] .stButton > button:hover {
+    background-color: rgba(72, 148, 226, 0.2) !important;
+    color: var(--primary) !important;
+}
+
+[class*="st-key-collapsebtn_"] {
+    padding-top: 1rem;
+    border-top: 1px solid var(--outline-variant);
+    margin-top: 0.5rem;
+}
+
+[class*="st-key-collapsebtn_"] .stButton > button:hover {
+    background-color: var(--surface-container-high) !important;
+}
+
+/* ── Historial de feedback ────────────────────────────── */
+.feedback-history {
+    background: var(--surface-container-low);
+    border: 1px solid var(--executive-border);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.feedback-history-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    margin: 0 0 0.5rem 0;
+}
+
+.feedback-history ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feedback-history li {
+    font-size: 13px;
+    color: var(--on-surface-variant);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--outline-variant);
+}
+
+.feedback-history li:last-child {
+    border-bottom: none;
+}
+
+/* ── Resumen de refresh ───────────────────────────────── */
+.refresh-summary {
+    background: var(--surface-container-low);
+    border: 1px solid var(--executive-border);
+    border-radius: var(--radius-xl);
+    padding: 1rem 1.5rem;
+    margin-bottom: var(--stack-gap);
+}
+
+.refresh-summary.success {
+    border-color: rgba(159, 202, 255, 0.3);
+}
+
+.refresh-summary.warning {
+    border-color: rgba(255, 180, 171, 0.4);
+}
+
+.refresh-summary p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--on-surface);
+}
+
+/* ── Estado vacío ─────────────────────────────────────── */
+.empty-state {
+    background: var(--surface-container-low);
+    border: 1px solid var(--executive-border);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    color: var(--on-surface-variant);
+}
+
+.empty-state p {
+    margin: 0;
+}
+
+/* ── Footer ───────────────────────────────────────────── */
+.app-footer {
+    margin-top: 2rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--outline-variant);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.app-footer-text {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--on-surface-variant);
+}
+
+/* ── Expanders (detalle de refresh) ───────────────────── */
+[data-testid="stExpander"] details {
+    background: var(--surface-container-low);
+    border: 1px solid var(--executive-border) !important;
+    border-radius: var(--radius-lg) !important;
+}
+
+/* ── Utilidades ───────────────────────────────────────── */
+.spacer-sm {
+    height: 0.5rem;
+}
+
+.spacer-md {
+    height: 1rem;
+}
