@@ -1,2 +1,4 @@
 beautifulsoup4>=4.15
 requests>=2.33
+streamlit>=1.30
+pydantic>=2
