@@ -12,8 +12,11 @@ from urllib.parse import urlencode
 from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "src"))
 ENV_FILE = ROOT / ".env"
 OUTPUT = Path(__file__).resolve().parent / "results" / "constructoras_latest.json"
+
+from ceo_radar.timeframe import allowed_years  # noqa: E402
 
 SEARCHES = (
     {
@@ -111,23 +114,32 @@ def main() -> int:
     seen_links: set[str] = set()
     unique_results: list[dict[str, str]] = []
 
+    years = sorted(allowed_years())
+
     try:
         for search in SEARCHES:
-            results = search_news(
-                api_key,
-                str(search["query"]),
-                str(search["gl"]),
-                str(search["hl"]),
-            )
-            searches.append({**search, "result_count": len(results)})
-            print(f"{search['market']}: {len(results)} resultados")
-            for result in results:
-                link = result["link"]
-                if link and link not in seen_links:
-                    seen_links.add(link)
-                    unique_results.append(
-                        {"market": str(search["market"]), **result}
-                    )
+            for year in years:
+                date_filter = f" after:{year}-01-01 before:{year}-12-31"
+                query_with_date = str(search["query"]) + date_filter
+                results = search_news(
+                    api_key,
+                    query_with_date,
+                    str(search["gl"]),
+                    str(search["hl"]),
+                )
+                searches.append({**search, "year": year, "result_count": len(results)})
+                print(f"{search['market']} ({year}): {len(results)} resultados")
+                for result in results:
+                    link = result["link"]
+                    if link and link not in seen_links:
+                        seen_links.add(link)
+                        unique_results.append(
+                            {
+                                "market": str(search["market"]),
+                                "year_window": year,
+                                **result,
+                            }
+                        )
     except (HTTPError, URLError, RuntimeError, TimeoutError) as error:
         print(f"Error al consultar SerpAPI: {error}", file=sys.stderr)
         return 1

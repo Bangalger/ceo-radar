@@ -17,12 +17,11 @@ from ceo_radar.catalogs import (  # noqa: E402
     TARGET_ROLES,
     normalize,
 )
+from ceo_radar.timeframe import allowed_years, is_year_allowed  # noqa: E402
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 SOURCE = RESULTS_DIR / "constructoras_latest.json"
 OUTPUT = RESULTS_DIR / "constructoras_curadas.json"
-
-CURRENT_YEAR = datetime.now(UTC).year
 
 
 def is_relevant(title: str) -> bool:
@@ -36,9 +35,9 @@ def is_relevant(title: str) -> bool:
     return has_target_role and has_sector
 
 
-def is_current_year(date: str) -> bool:
+def is_date_in_window(date: str) -> bool:
     try:
-        return datetime.strptime(date[:10], "%m/%d/%Y").year == CURRENT_YEAR
+        return is_year_allowed(datetime.strptime(date[:10], "%m/%d/%Y").year)
     except ValueError:
         return False
 
@@ -49,8 +48,9 @@ def main() -> None:
         result
         for result in data["results"]
         if is_relevant(str(result["title"]))
-        and is_current_year(str(result["date"]))
+        and is_date_in_window(str(result["date"]))
     ]
+    years_str = ", ".join(str(y) for y in sorted(allowed_years()))
     OUTPUT.write_text(
         json.dumps(
             {
@@ -59,7 +59,7 @@ def main() -> None:
                 "selection": (
                     "Selección heurística: el titular identifica el sector o una "
                     "empresa constructora/desarrolladora conocida de Latinoamérica, "
-                    f"con fecha dentro de {CURRENT_YEAR}."
+                    f"con fecha dentro de [{years_str}]."
                 ),
                 "source_result": SOURCE.name,
                 "raw_result_count": data["unique_result_count"],

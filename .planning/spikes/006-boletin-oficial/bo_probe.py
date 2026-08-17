@@ -12,7 +12,7 @@ import json
 import re
 import sys
 import unicodedata
-from datetime import UTC, datetime, timedelta
+from datetime import UTC, datetime
 from pathlib import Path
 
 import requests
@@ -22,13 +22,12 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "src"))
 
 from ceo_radar.catalogs import LATAM_COMPANIES  # noqa: E402
+from ceo_radar.timeframe import is_year_allowed, window_start_date  # noqa: E402
 
 BASE = "https://www.boletinoficial.gob.ar"
 SEARCH_URL = f"{BASE}/busquedaAvanzada/realizarBusqueda/segunda"
 OUTPUT = Path(__file__).resolve().parent / "results" / "latest.json"
-CURRENT_YEAR = datetime.now(UTC).year
-LOOKBACK_DAYS = 90
-MAX_DETAILS = 40
+MAX_DETAILS = 120
 
 HEADERS = {
     "User-Agent": "CEO-Radar/0.1 (+public BO data monitor)",
@@ -94,7 +93,8 @@ def normalize(text: str) -> str:
 
 
 def build_params(*, texto: str = "", denominacion: str = "") -> dict:
-    date_from = (datetime.now() - timedelta(days=LOOKBACK_DAYS)).strftime("%d/%m/%Y")
+    start = window_start_date()
+    date_from = start.strftime("%d/%m/%Y")
     date_to = datetime.now().strftime("%d/%m/%Y")
     return {
         "texto": texto,
@@ -212,9 +212,9 @@ def fetch_detail(detail_url: str) -> dict:
     }
 
 
-def is_current_year(date: str) -> bool:
+def is_date_in_window(date: str) -> bool:
     match = re.search(r"\b(20\d{2})\b", date)
-    return bool(match and int(match.group(1)) == CURRENT_YEAR)
+    return bool(match and is_year_allowed(int(match.group(1))))
 
 
 def classify_relevance(text: str) -> tuple[bool, str]:
@@ -240,6 +240,10 @@ def argentina_companies() -> list[str]:
             if country == "argentina"
         }
     )
+
+
+def _lookback_days() -> int:
+    return (datetime.now().date() - window_start_date()).days
 
 
 def build_verdict(
@@ -273,7 +277,7 @@ def build_verdict(
             "relevant": relevant_count,
             "noise": noise_count,
             "precision_on_sample": precision,
-            "lookback_days": LOOKBACK_DAYS,
+            "lookback_days": _lookback_days(),
         },
         "limitations": [
             "Alto volumen de avisos comerciales no ejecutivos (convocatorias, balances, etc.).",
@@ -321,10 +325,10 @@ def main() -> int:
                 candidates.append(item)
         print(f"empresa '{company}': {count} resultados, {len(parsed)} parseados")
 
-    current_year_candidates = [
-        item for item in candidates if not item["date"] or is_current_year(item["date"])
+    current_window_candidates = [
+        item for item in candidates if not item["date"] or is_date_in_window(item["date"])
     ]
-    to_fetch = current_year_candidates[:MAX_DETAILS]
+    to_fetch = current_window_candidates[:MAX_DETAILS]
 
     results: list[dict] = []
     relevant_count = 0
@@ -360,7 +364,7 @@ def main() -> int:
         "fetched_at": datetime.now(UTC).isoformat(),
         "source": "Boletín Oficial de la República Argentina — Sección 2",
         "source_url": f"{BASE}/busquedaAvanzada/index",
-        "year": CURRENT_YEAR,
+        "year": datetime.now(UTC).year,
         "country_focus": "argentina",
         "criteria": {
             "section": 2,
@@ -368,7 +372,7 @@ def main() -> int:
             "company_seeds": argentina_companies(),
             "target_roles": TARGET_ROLES,
             "change_markers": CHANGE_MARKERS,
-            "lookback_days": LOOKBACK_DAYS,
+            "lookback_days": _lookback_days(),
         },
         "searches": searches,
         "raw_candidate_count": len(candidates),

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import unicodedata
 from datetime import UTC, datetime
 from pathlib import Path
@@ -12,9 +13,12 @@ import requests
 from bs4 import BeautifulSoup, Tag
 
 ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "src"))
+
+from ceo_radar.timeframe import is_year_allowed  # noqa: E402
+
 SOURCE_URL = "https://www.cnv.gov.ar/SitioWeb/HechosRelevantes"
 OUTPUT = Path(__file__).resolve().parent / "results" / "cnv_cambios_ejecutivos.json"
-CURRENT_YEAR = datetime.now(UTC).year
 
 TARGET_ROLES = (
     "CEO",
@@ -63,9 +67,9 @@ def is_target_change(description: str) -> bool:
     return has_role and has_change
 
 
-def is_current_year(date: str) -> bool:
+def is_date_in_window(date: str) -> bool:
     match = re.search(r"\b(20\d{2})\b", date)
-    return bool(match and int(match.group(1)) == CURRENT_YEAR)
+    return bool(match and is_year_allowed(int(match.group(1))))
 
 
 def parse_table(table: Tag, table_index: int) -> list[dict[str, str | int]]:
@@ -87,7 +91,7 @@ def parse_table(table: Tag, table_index: int) -> list[dict[str, str | int]]:
             or field(record, "FIDEICOMISO")
         )
 
-        if not is_current_year(date) or not is_target_change(description):
+        if not is_date_in_window(date) or not is_target_change(description):
             continue
 
         link = row.select_one("a[href]")
@@ -129,7 +133,7 @@ def main() -> int:
                 "fetched_at": datetime.now(UTC).isoformat(),
                 "source": "Comisión Nacional de Valores (CNV) — Hechos Relevantes",
                 "source_url": SOURCE_URL,
-                "year": CURRENT_YEAR,
+                "year": datetime.now(UTC).year,
                 "criteria": {
                     "roles": TARGET_ROLES,
                     "change_markers": CHANGE_MARKERS,

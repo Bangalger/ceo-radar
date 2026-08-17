@@ -7,7 +7,7 @@ from hashlib import sha256
 from ceo_radar.models import Article, Event, Run
 from ceo_radar.utils import parse_bo_date, parse_cnv_date, parse_google_date
 from ceo_radar.extraction import extract_entities_from_text, infer_country
-from ceo_radar.catalogs import get_sector_for_company, get_company_size, normalize
+from ceo_radar.catalogs import get_sector_for_company, get_company_size, get_sector_for_text, normalize
 
 ROOT = Path(__file__).resolve().parents[2]
 CNV_INPUT = (
@@ -45,6 +45,14 @@ NICHO_INPUT = (
 OUTPUT = ROOT / ".planning" / "results" / "oportunidades_unificadas.json"
 
 GROUPING_WINDOW_DAYS = 45
+
+
+def _ensure_sector(extracted_data: Dict[str, Any], text: str) -> None:
+    """Si no se resolvió sector por empresa, intenta inferirlo del texto."""
+    if not extracted_data.get("sector"):
+        sector = get_sector_for_text(text)
+        if sector:
+            extracted_data["sector"] = sector
 
 ENTITY_KEYS = [
     "company",
@@ -187,6 +195,8 @@ def run_pipeline() -> Run:
         if size:
             extracted_data["company_size"] = size
 
+        _ensure_sector(extracted_data, full_text)
+
         articles.append(
             Article(
                 id=article_id,
@@ -229,6 +239,8 @@ def run_pipeline() -> Run:
             if size:
                 extracted_data["company_size"] = size
 
+        _ensure_sector(extracted_data, full_text)
+
         articles.append(
             Article(
                 id=article_id,
@@ -261,6 +273,8 @@ def run_pipeline() -> Run:
         if size:
             extracted_data["company_size"] = size
 
+        _ensure_sector(extracted_data, full_text)
+
         articles.append(
             Article(
                 id=article_id,
@@ -286,6 +300,8 @@ def run_pipeline() -> Run:
             size = get_company_size(company_name)
             if size:
                 extracted_data["company_size"] = size
+
+        _ensure_sector(extracted_data, f"{item['title']} {item.get('snippet', '')}")
 
         articles.append(
             Article(

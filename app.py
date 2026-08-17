@@ -7,27 +7,15 @@ ROOT_DIR = Path(__file__).resolve().parents[0]
 sys.path.append(str(ROOT_DIR))
 sys.path.append(str(ROOT_DIR / "src"))
 
+from ceo_radar.filters import apply_filters, render_filter_bar  # noqa: E402
+from ceo_radar.formatters import (  # noqa: E402
+    format_person_display,
+    format_role_label,
+    format_timing,
+)
 from ceo_radar.models import Event, Feedback  # noqa: E402
 from ceo_radar.services import events_service, feedback_service  # noqa: E402
-
-ROLE_LABELS = {
-    "ceo": "Nuevo CEO",
-    "director ejecutivo": "Nuevo director ejecutivo",
-    "diretor executivo": "Nuevo director ejecutivo",
-    "gerente comercial": "Nuevo gerente comercial",
-    "director comercial": "Nuevo director comercial",
-    "diretor comercial": "Nuevo director comercial",
-    "gerente general": "Nuevo gerente general",
-    "presidente": "Nuevo presidente",
-    "vicepresidente": "Nuevo vicepresidente",
-    "director titular": "Nuevo director titular",
-    "directora titular": "Nueva directora titular",
-    "director suplente": "Nuevo director suplente",
-    "directora suplente": "Nueva directora suplente",
-    "directorio": "Cambio de directorio",
-    "gerente": "Nuevo gerente",
-    "director": "Nuevo director",
-}
+from ceo_radar.services import linkedin_service  # noqa: E402
 
 COUNTRY_LABELS = {
     "argentina": "Argentina",
@@ -36,28 +24,10 @@ COUNTRY_LABELS = {
 }
 
 
-def format_role_label(role: str | None) -> str:
-    if not role:
-        return "Cambio ejecutivo"
-    return ROLE_LABELS.get(role.lower(), f"Nuevo {role}")
-
-
 def format_country_label(country: str | None) -> str:
     if not country:
         return "país desconocido"
     return COUNTRY_LABELS.get(country.lower(), country.title())
-
-
-def build_event_title(event: Event) -> str:
-    entities = event.entities
-    company = entities.get("company") or "Empresa no identificada"
-    role_label = format_role_label(entities.get("role"))
-    country_label = format_country_label(entities.get("country"))
-    person = entities.get("person")
-
-    if person:
-        return f"{company} — {person} — {role_label} — {country_label}"
-    return f"{company} — {role_label} — {country_label}"
 
 
 def format_feedback_summary(entry: Feedback) -> str:
@@ -72,12 +42,26 @@ def format_feedback_summary(entry: Feedback) -> str:
     return " · ".join(parts)
 
 
+def render_event_identity(event: Event) -> None:
+    entities = event.entities
+    person = format_person_display(entities)
+    role = format_role_label(entities.get("role"))
+    company = entities.get("company") or "Empresa no identificada"
+    country = format_country_label(entities.get("country"))
+    timing = format_timing(event)
+
+    st.subheader(person)
+    st.markdown(f"**{role}** · `{company}` · {country}")
+    st.caption(f"Anuncio: {timing}")
+    if event.last_seen.date() != event.first_seen.date():
+        st.caption(
+            f"Detectado entre {event.first_seen.strftime('%Y-%m-%d')} "
+            f"y {event.last_seen.strftime('%Y-%m-%d')}"
+        )
+
+
 def render_event_details(event: Event) -> None:
-    st.caption(
-        f"{len(event.articles)} noticia(s) · "
-        f"Primera vez visto: {event.first_seen.strftime('%Y-%m-%d')} · "
-        f"Última vez visto: {event.last_seen.strftime('%Y-%m-%d')}"
-    )
+    st.caption(f"{len(event.articles)} noticia(s)")
 
     with st.expander("Ver artículos y detalle de extracción"):
         st.write("**Entidades consolidadas:**")
@@ -89,6 +73,70 @@ def render_event_details(event: Event) -> None:
             if article.description:
                 st.text(article.description)
             st.json(article.extracted_data)
+
+
+def render_linkedin_search(event: Event) -> None:
+    person = (event.entities.get("person") or "").strip()
+    company = event.entities.get("company")
+    role = event.entities.get("role")
+    country = event.entities.get("country")
+    state_key = f"linkedin_result_{event.id}"
+
+    st.write("**Perfil de LinkedIn**")
+    if not person:
+        st.caption("Sin nombre de persona extraído; no se puede buscar el perfil.")
+        return
+
+    search_col, refresh_col = st.columns(2)
+    with search_col:
+        search_clicked = st.button(
+            "Buscar LinkedIn",
+            key=f"li_search_{event.id}",
+            use_container_width=True,
+        )
+    with refresh_col:
+        refresh_clicked = st.button(
+            "Volver a buscar",
+            key=f"li_refresh_{event.id}",
+            use_container_width=True,
+        )
+
+    if search_clicked or refresh_clicked:
+        with st.spinner("Buscando perfil en LinkedIn..."):
+            st.session_state[state_key] = linkedin_service.lookup(
+                person,
+                company,
+                role,
+                country,
+                force_refresh=refresh_clicked,
+            )
+
+    result = st.session_state.get(state_key)
+    if not result:
+        st.caption("La búsqueda usa SerpAPI solo al hacer click.")
+        return
+
+    if result.get("error"):
+        st.warning(result["error"])
+        return
+
+    searched_at = result.get("searched_at")
+    cached_label = " (caché)" if result.get("cached") else ""
+    if searched_at:
+        st.caption(f"Consulta: {searched_at}{cached_label}")
+
+    profiles = result.get("results") or []
+    if not profiles:
+        st.info("No se encontraron perfiles de LinkedIn para esta persona.")
+        return
+
+    for profile in profiles[:3]:
+        title = profile.get("title") or profile.get("link")
+        link = profile.get("link")
+        snippet = profile.get("snippet") or ""
+        st.markdown(f"- [{title}]({link})")
+        if snippet:
+            st.caption(snippet)
 
 
 def render_feedback_form(event: Event, latest: Feedback | None) -> None:
@@ -142,6 +190,16 @@ def render_feedback_history(event: Event) -> None:
         st.markdown(f"- {format_feedback_summary(entry)}")
 
 
+def render_event_card(event: Event, latest: Feedback | None, *, show_history: bool = False) -> None:
+    render_event_identity(event)
+    render_event_details(event)
+    render_linkedin_search(event)
+    if show_history:
+        render_feedback_history(event)
+    render_feedback_form(event, latest)
+    st.markdown("---")
+
+
 st.set_page_config(layout="wide", page_title="CEO Radar Dashboard")
 
 
@@ -151,6 +209,11 @@ def load_events_cached(_events_mtime: float, _feedback_mtime: float):
 
 
 events_service.ensure_events_file()
+
+st.sidebar.caption(
+    "La actualización de fuentes consume cuota de SerpAPI "
+    "(búsquedas del año actual y del anterior)."
+)
 
 if st.sidebar.button("Regenerar datos (correr pipeline)"):
     with st.spinner("Corriendo pipeline..."):
@@ -184,31 +247,31 @@ if view == "Radar":
         if not feedback_service.is_rejected(event.id, latest_by_event)
     ]
 
-    if visible_events:
-        for event in visible_events:
-            st.subheader(build_event_title(event))
-            render_event_details(event)
-            render_feedback_form(event, latest_by_event.get(event.id))
-            st.markdown("---")
+    filter_state = render_filter_bar(visible_events)
+    filtered_events = apply_filters(visible_events, filter_state)
+
+    st.caption(f"Mostrando {len(filtered_events)} de {len(visible_events)} eventos")
+
+    if filtered_events:
+        for event in filtered_events:
+            render_event_card(event, latest_by_event.get(event.id))
     else:
-        st.info("No hay eventos visibles en el radar (todos fueron marcados como no relevantes).")
+        st.info("No hay eventos que coincidan con los filtros seleccionados.")
 
 elif view == "Auditoría":
     st.header("Auditoría de eventos")
     st.caption("Incluye rechazados y el historial completo de feedback por evento.")
 
-    if events:
-        for event in events:
-            latest = latest_by_event.get(event.id)
-            title = build_event_title(event)
-            if latest and latest.status == "no_relevante":
-                st.subheader(f"[Rechazado] {title}")
-            else:
-                st.subheader(title)
+    filter_state = render_filter_bar(events)
+    filtered_events = apply_filters(events, filter_state)
 
-            render_event_details(event)
-            render_feedback_history(event)
-            render_feedback_form(event, latest)
-            st.markdown("---")
+    st.caption(f"Mostrando {len(filtered_events)} de {len(events)} eventos")
+
+    if filtered_events:
+        for event in filtered_events:
+            latest = latest_by_event.get(event.id)
+            if latest and latest.status == "no_relevante":
+                st.markdown("**[Rechazado]**")
+            render_event_card(event, latest, show_history=True)
     else:
-        st.info("No hay eventos disponibles para auditar.")
+        st.info("No hay eventos que coincidan con los filtros seleccionados.")

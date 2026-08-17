@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "src"))
 
 from ceo_radar.extraction import extract_entities_from_text  # noqa: E402
+from ceo_radar.timeframe import allowed_years, is_year_allowed  # noqa: E402
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 SOURCES = (
@@ -19,7 +20,6 @@ SOURCES = (
     RESULTS_DIR / "adlatina_latest.json",
 )
 OUTPUT = RESULTS_DIR / "curadas.json"
-CURRENT_YEAR = datetime.now(UTC).year
 
 NOMBRAMIENTO_MARKERS = (
     "nuevo",
@@ -51,9 +51,9 @@ def parse_year(date: str) -> int | None:
     return None
 
 
-def is_current_year(date: str) -> bool:
+def is_date_in_window(date: str) -> bool:
     year = parse_year(date)
-    return year == CURRENT_YEAR if year else False
+    return is_year_allowed(year) if year else False
 
 
 def looks_like_nombramiento(title: str, snippet: str) -> bool:
@@ -109,7 +109,7 @@ def main() -> None:
 
         if not looks_like_nombramiento(title, snippet):
             continue
-        if date and not is_current_year(date):
+        if date and not is_date_in_window(date):
             continue
 
         extracted = extract_entities_from_text(f"{title} {snippet}")
@@ -130,10 +130,10 @@ def main() -> None:
         json.dumps(
             {
                 "generated_at": datetime.now(UTC).isoformat(),
-                "year": CURRENT_YEAR,
+                "years": sorted(allowed_years()),
                 "scope": (
                     "Nombramientos curados desde revistas de nicho argentinas. "
-                    "Se incluyen resultados del año vigente con señales de rol, "
+                    "Se incluyen resultados de la ventana temporal vigente con señales de rol, "
                     "persona, empresa o tipo de cambio."
                 ),
                 "source_stats": source_stats,

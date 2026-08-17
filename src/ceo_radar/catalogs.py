@@ -100,6 +100,110 @@ SECTOR_CATALOG: Dict[str, List[str]] = {
         "grupo diagonal",
         "grupo marquise",
     ],
+    "inmobiliario": [
+        "inmobiliaria",
+        "real estate",
+        "bienes raices",
+        "propiedades",
+        "desarrollos urbanos",
+    ],
+    "retail_consumo": [
+        "retail",
+        "supermercado",
+        "tienda",
+        "consumo masivo",
+        "e-commerce",
+        "ecommerce",
+        "marketplace",
+    ],
+    "alimentos_bebidas": [
+        "alimentos",
+        "bebidas",
+        "lacteos",
+        "cervecera",
+        "agroindustrial",
+        "frigorifico",
+    ],
+    "tecnologia": [
+        "software",
+        "tech",
+        "tecnologia",
+        "saas",
+        "fintech",
+        "startup",
+        "digital",
+        "inteligencia artificial",
+    ],
+    "finanzas": [
+        "banco",
+        "bank",
+        "financiera",
+        "seguros",
+        "insurance",
+        "asset management",
+        "fondo de inversion",
+        "bolsa",
+    ],
+    "salud": [
+        "salud",
+        "hospital",
+        "clinica",
+        "farmaceutica",
+        "laboratorio",
+        "pharma",
+        "biotech",
+    ],
+    "marketing_publicidad": [
+        "publicidad",
+        "marketing",
+        "agencia creativa",
+        "comunicacion",
+        "medios",
+        "advertising",
+    ],
+    "energia": [
+        "energia",
+        "petroleo",
+        "oil",
+        "gas",
+        "renovable",
+        "electrica",
+        "minera",
+        "mining",
+    ],
+    "industria_manufactura": [
+        "manufactura",
+        "industrial",
+        "fabrica",
+        "siderurgica",
+        "automotriz",
+        "autopartes",
+        "quimica",
+    ],
+    "agro": [
+        "agro",
+        "agronegocios",
+        "campo",
+        "semillas",
+        "fertilizante",
+        "ganaderia",
+    ],
+    "logistica": [
+        "logistica",
+        "transporte",
+        "naviera",
+        "courier",
+        "supply chain",
+        "puerto",
+    ],
+    "telecomunicaciones": [
+        "telecom",
+        "telecomunicaciones",
+        "telefonica",
+        "celular",
+        "internet",
+        "fibra optica",
+    ],
 }
 
 COMPANY_SIZE_CATALOG: Dict[str, str] = {
@@ -148,3 +252,65 @@ def get_sector_for_company(company_name: str) -> Optional[str]:
 
 def get_company_size(company_name: str) -> Optional[str]:
     return COMPANY_SIZE_CATALOG.get(normalize(company_name))
+
+
+# ---------------------------------------------------------------------------
+# Agrupación de roles para filtrado en la UI
+# ---------------------------------------------------------------------------
+
+ROLE_GROUPS: Dict[str, tuple[str, ...]] = {
+    "ceo": ("ceo", "director ejecutivo", "diretor executivo"),
+    "comercial": ("gerente comercial", "director comercial", "diretor comercial"),
+    "gerencia_general": ("gerente general",),
+    "directorio": (
+        "presidente",
+        "vicepresidente",
+        "directorio",
+        "director titular",
+        "directora titular",
+        "director suplente",
+        "directora suplente",
+    ),
+    "otros": ("director", "gerente", "cfo", "cto"),
+}
+
+ROLE_GROUP_LABELS: Dict[str, str] = {
+    "ceo": "CEO / Director Ejecutivo",
+    "comercial": "Comercial",
+    "gerencia_general": "Gerencia General",
+    "directorio": "Directorio y Presidencia",
+    "otros": "Otros roles",
+    "sin_clasificar": "Sin clasificar",
+}
+
+DECISION_ROLE_GROUPS: tuple[str, ...] = ("ceo", "comercial", "gerencia_general", "directorio")
+
+
+def get_role_group(role: Optional[str]) -> str:
+    """Retorna la clave de grupo al que pertenece el rol."""
+    if not role:
+        return "sin_clasificar"
+    normalized_role = normalize(role)
+    best_group: Optional[str] = None
+    best_length = -1
+    for group, roles in ROLE_GROUPS.items():
+        for candidate in roles:
+            normalized_candidate = normalize(candidate)
+            if normalized_candidate == normalized_role:
+                return group
+            if (
+                normalized_candidate in normalized_role
+                and len(normalized_candidate) > best_length
+            ):
+                best_group = group
+                best_length = len(normalized_candidate)
+    return best_group or "sin_clasificar"
+
+
+def get_sector_for_text(text: str) -> Optional[str]:
+    """Infiere sector desde texto libre (titular + snippet)."""
+    normalized_text = normalize(text)
+    for sector, keywords in SECTOR_CATALOG.items():
+        if any(kw in normalized_text for kw in keywords):
+            return sector
+    return None
